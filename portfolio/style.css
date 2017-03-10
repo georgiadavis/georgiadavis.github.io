@@ -87,6 +87,11 @@ h1 {
   color: #34373A;
   opacity: 0.6;
   overflow: hidden;
+}
+
+.social:hover {
+  transform: translateY(-2px);
+  opacity: 0.8;
   cursor: pointer;
 }
 
