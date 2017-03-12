@@ -42,6 +42,7 @@ body {
   width:100%;
   height:10px;
   background-color: #FF5483;
+
 }
 
 .top-border-project2{
@@ -81,6 +82,14 @@ h1 {
   font-family: 'GreycliffCF-ExtraBold', Helvetica, Arial, Sans-Serif;
 }
 
+h2 {
+  font-family: helvetica, sans-serif;
+  margin-bottom: 0;
+  font-size: 22px;
+  font-family: 'GreycliffCF-ExtraBold', Helvetica, Arial, Sans-Serif;
+}
+
+
 .work-item {
   border-radius: 5px;
   margin-top: 2em;
@@ -96,7 +105,7 @@ h1 {
 }
 
 .project-1 {
-  background: linear-gradient(rgba(255,84,131,0.5), rgba(255,84,131,0.8)), url(img/bg-1.png);
+  background: linear-gradient(rgba(255,84,131,0.5), rgba(255,84,131,0.8));
   background-position: center;
 }
 
