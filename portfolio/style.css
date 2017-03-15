@@ -103,12 +103,19 @@ h2 {
   cursor: pointer;
 }
 
+.portfolio-item {
+  border-radius: 5px;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+
 .portfolio-img {
   width: 80%;
   display: block;
   margin: auto;
   margin-top: 2em;
-  margin-bottom: 2em; 
+  margin-bottom: 2em;
 }
 
 .text-light {
