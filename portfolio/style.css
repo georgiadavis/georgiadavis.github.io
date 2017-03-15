@@ -103,6 +103,14 @@ h2 {
   cursor: pointer;
 }
 
+.portfolio-img {
+  width: 80%;
+  display: block;
+  margin: auto;
+  margin-top: 2em;
+  margin-bottom: 2em; 
+}
+
 .text-light {
   opacity: 0.6;
 }
