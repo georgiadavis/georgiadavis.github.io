@@ -167,6 +167,19 @@ h2 {
   cursor: pointer;
 }
 
+.btn-back {
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 16px;
+  position: absolute;
+  left: 10px;
+  top: 20px;
+}
+
+.text-sm {
+  font-size: 12px;
+}
+
 
 @media(max-width:700px){
  .container {
