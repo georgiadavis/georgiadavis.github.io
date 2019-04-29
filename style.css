@@ -1,5 +1,5 @@
 @import url('http://weloveiconfonts.com/api/?family=entypo');
-@import url('https://fonts.googleapis.com/css?family=Nunito+Sans');
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700');
 * {
   box-sizing: border-box;
 }
@@ -8,73 +8,10 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Nunito Sans', sans-serif;
-  color: #34373A;
-  font-size: 21px;
+  color: #2E3D49;
+  font-size: 16px;
   line-height: 1.4;
 }
-
-/*.top-border {
-  width:100%;
-  height:10px;
-  background: linear-gradient(90deg, #FF5483, #A951ED, #448AFF, #40C4FF, #69F0AE, #FFD740);
-	background-size: 600% 600%;
-	-webkit-animation: Gradient 30s ease infinite;
-	-moz-animation: Gradient 30s ease infinite;
-	animation: Gradient 30s ease infinite;
-}
-
-    @-webkit-keyframes Gradient {
-		0%{background-position:0% 50%}
-		50%{background-position:100% 50%}
-		100%{background-position:100% 50%}
-	}
-	@-moz-keyframes Gradient {
-		0%{background-position:0% 50%}
-		50%{background-position:100% 50%}
-		100%{background-position:0% 50%}
-	}
-	@keyframes Gradient {
-		0%{background-position:0% 50%}
-		50%{background-position:100% 50%}
-		100%{background-position:0% 50%}
-	}*/
-
-/*.top-border-project1{
-  width:100%;
-  height:10px;
-  background-color: #69F0AE;
-
-}
-
-.top-border-project2{
-  width:100%;
-  height:10px;
-  background-color: #40C4FF;
-}
-
-.top-border-project3{
-  width:100%;
-  height:10px;
-  background-color: #A951ED;
-}
-
-.top-border-project4{
-  width:100%;
-  height:10px;
-  background-color: #40C4FF;
-}
-
-.top-border-project5{
-  width:100%;
-  height:10px;
-  background-color: #69F0AE;
-}
-
-.top-border-project6{
-  width:100%;
-  height:10px;
-  background-color: #FFD740;
-}*/
 
 a:link {
     text-decoration: none;
@@ -91,30 +28,36 @@ a:hover {
 
 h1 {
   margin-bottom: 0;
-  font-size: 30px;
+  font-size: 32px;
   font-family: 'Nunito Sans Bold', sans-serif;
 }
 
 h2 {
   margin-bottom: 0;
-  font-size: 22px;
+  font-size: 24px;
   font-family: 'Nunito Sans', sans-serif;
   text-align: left;
 }
 
+p {
+  margin-bottom: 0;
+  font-size: 16px;
+  font-family: 'Nunito Sans', sans-serif;
+  text-align: left;
+}
 
 .work-item {
   border-radius: 0px;
   margin-top: 2em;
-  /*transition: 0.15s all ease;*/
+  transition: 0.15s all ease;*/
 }
 
-/*.work-item:hover {
+.work-item:hover {
   transform: translateY(-2px);
   box-shadow: 0 2px 3px #ccc;
   opacity: 0.8;
   cursor: pointer;
-}*/
+}
 
 .portfolio-item {
   border-radius: 5px;
@@ -146,34 +89,6 @@ h2 {
   padding: 10px 0 0;
 }
 
-.social {
-  display: inline-block;
-  width: 50px;
-  height: 50px;
-  margin: 0 10px;
-  line-height: 50px;
-  font-family: Entypo;
-  font-size: 28px;
-  text-align: center;
-  color: #34373A;
-  opacity: 0.6;
-  overflow: hidden;
-}
-
-.social:hover {
-  transform: translateY(-2px);
-  opacity: 0.8;
-  cursor: pointer;
-}
-
-.btn-back {
-  padding: 10px;
-  border-radius: 4px;
-  font-size: 16px;
-  position: absolute;
-  left: 10px;
-  top: 20px;
-}
 
 .text-sm {
   font-size: 12px;
