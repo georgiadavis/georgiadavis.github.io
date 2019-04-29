@@ -90,17 +90,15 @@ a:hover {
 }
 
 h1 {
-  font-family: helvetica, sans-serif;
   margin-bottom: 0;
   font-size: 30px;
-  font-family: 'GreycliffCF-ExtraBold', Helvetica, Arial, Sans-Serif;
+  font-family: 'Nunito Sans Bold', sans-serif;
 }
 
 h2 {
-  font-family: helvetica, sans-serif;
   margin-bottom: 0;
   font-size: 22px;
-  font-family: 'GreycliffCF-ExtraBold', Helvetica, Arial, Sans-Serif;
+  font-family: 'Nunito Sans', sans-serif;
   text-align: left;
 }
 
@@ -111,12 +109,12 @@ h2 {
   transition: 0.15s all ease;
 }
 
-.work-item:hover {
+/*.work-item:hover {
   transform: translateY(-2px);
   box-shadow: 0 2px 3px #ccc;
   opacity: 0.8;
   cursor: pointer;
-}
+}*/
 
 .portfolio-item {
   border-radius: 5px;
