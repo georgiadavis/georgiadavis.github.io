@@ -1,0 +1,108 @@
+@import url('http://weloveiconfonts.com/api/?family=entypo');
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700');
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Nunito Sans', sans-serif;
+  color: #2E3D49;
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+a:link {
+    text-decoration: none;
+    color:#02B3E4;
+}
+
+a:visited {
+    color:#02B3E4;
+}
+
+a:hover {
+    opacity: .6;
+}
+
+h1 {
+  margin-bottom: 0;
+  font-size: 32px;
+}
+
+h2 {
+  margin-bottom: 0;
+  font-size: 22px;
+  font-weight: normal;
+  text-align: left;
+}
+
+p {
+  margin-bottom: 0;
+  font-size: 18px;
+  text-align: left;
+}
+
+.work-item {
+  border-radius: 0px;
+  margin-top: 2em;
+  transition: 0.15s all ease;
+}
+
+.work-item:hover {
+  transform: translateY(-2px);
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.portfolio-item {
+  border-radius: 5px;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+
+.portfolio-img {
+  width: 100%;
+  display: block;
+  margin: auto;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.text-light {
+  opacity: 0.6;
+}
+
+.container {
+  width: 92%;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container-sm {
+  width: 92%;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.wrapper {
+  text-align: center;
+  padding: 10px 0 0;
+}
+
+
+.text-sm {
+  font-size: 12px;
+}
+
+
+@media(max-width:700px){
+ .container {
+     width: 80%;
+     float:none;}
+}
