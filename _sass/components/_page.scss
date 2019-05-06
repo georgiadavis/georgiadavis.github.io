@@ -1,2 +1,15 @@
-.post {
+.page {
+   @extend .container;
+
+   & p{
+     @extend .container-sm;
+   }
+
+   & h1,h2 {
+     text-align: center;
+   }
+
+   & img {
+     max-width: 100%;
+   }
 }
