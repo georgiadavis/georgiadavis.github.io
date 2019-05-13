@@ -11,21 +11,14 @@ The goal for the Blueprint design system was to improve cohesiveness on the GoFu
 
 ![an image alt text]({{ site.baseurl }}/assets/img/Systems1.png)
 
-Prior to introducing the Blueprint design system, there wasn't a clear process for introducing new design components or auditing existing components. This led to coexisting versions of the same component which caused inconsistent user experiences and engineering debt. There were many challenges in creating a design systems while many new projects were in flight and existing products had conflicting designs components. Eventually, I established an a process to discover,  
-
-Develop a specific design system road map that would allow for foundational library to be built and cycles for introducing or updating patterns.
-Minimize projects that get launched with inconsistencies
-Use HTML/CSS devs’ time more efficiently
-Engineers don’t have to guess how to put a layout together
-Shared vernacular for dev and design
-Dev and Design awareness on how to address new patterns on their projects
-When we update a pattern, it will be updated across the product
-
+Prior to introducing the Blueprint design system, there wasn't a clear process for introducing new design components or auditing existing components. This led to coexisting versions of the same component which caused inconsistent user experiences and engineering debt. It was challenging to create a design system while many new projects were in flight and existing products had conflicting designs components. Eventually, I established an a process to discover, decide, document, and design a basic UI library.
 
 ![an image alt text]({{base.siteurl}}/assets/img/Systems2.png)
 
-Rather than adapting one pattern to represent campaigns across different use cases, historically we have started from scratch which means more lines of code for engineers to write and an inconsistent experience for users.
+I developed a specific design system road map that engaged every designer and front end developer in building a foundational component library. We utilized the atomic design approach to audit existing variations of atoms, molecules, and organisms. Every week, each designer was assigned to a different component and proposed a solution that would fit the most product use cases. Simultaneously, all team members would audit their projects and update old components. Finally, front-end engineers would provide technical feedback and a proposal for implementation.
 
 ![an image alt text]({{base.siteurl}}/assets/img/Systems3.png)
-“Constraints help design because they force a few early decisions. They take the responsibility of some early arbitrary decisions off your shoulders and place it on the constraints.” - Steven Bradley
-![an image alt text]({{base.siteurl}}/assets/img/designsystem.png)
+
+The GoFundMe campaign tile was an example of a organism we examined in this process. Historically, there were three different versions of the campaign tile: discovery, management, and marketing tiles. After much discussion, we justified the need for these three different versions on the platform. However, through process we were able to bring these three versions in closer in visual alignment.
+
+Check out the impact of the Blueprint design system on the <a href="https://www.gofundme.com/" target="_blank"> GoFundMe homepage </a> .
