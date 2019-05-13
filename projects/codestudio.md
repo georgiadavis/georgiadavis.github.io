@@ -11,7 +11,7 @@ I was the product lead and spent six months developing and testing the Code Stud
 
 ![an image alt text](https://cdn-images-1.medium.com/max/1600/1*DCTAcQoOW90yDoj04eWgLA@2x.jpeg)
 
-My role was to understand why there was a high rate of students quitting the Udacity's "Introduction to Programming"  Nanodegree before submitting their first project. Our team participated in cross-team design sprint to evaluate how we we create an empowering learning environment for beginner students. We decided to execute on the idea of designing an in-browser coding environment. We sketched, created a wireframe, and tested a low fidelity prototype with actual students.
+My goal was to reduce the high rate of students quitting the Udacity's "Introduction to Programming" Nanodegree before submitting their first project. Our team participated in cross-team design sprint to evaluate how we create an empowering learning environment for beginner students. We decided to execute on the idea of designing an in-browser coding environment. We sketched, created a wireframe, and tested a low fidelity prototype with actual students.
 
 ![an image alt text]({{base.siteurl}}/assets/img/codestudio1.jpeg)
 
