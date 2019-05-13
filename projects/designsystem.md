@@ -3,7 +3,7 @@ layout: page
 ---
 
 
-## Blueprint Design System
+# Blueprint Design System
 
 GoFundMe is an online fundraising platform that enables people to receive donations in times of need. The Blueprint design system was created to provide a streamlined design and development process, UI standards and documentation for future GoFundMe products.
 

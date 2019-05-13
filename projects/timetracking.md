@@ -3,12 +3,17 @@ layout: page
 ---
 
 
-## Time Tracking
+# Time Tracking
 
 Kukui is a software company that serves auto repair shops.The goal of time tracking is
 
 ![an image alt text]({{ site.baseurl }}/assets/img/Time1.png)
+<<<<<<< HEAD
 I worked as the lead designer on DVI for  six months. Our team consisted of a front end engineer, back end engineer, the chief product officer, and myself. My goal
+=======
+
+I worked as the lead designer on DVI for a duration of six months. Our team consisted of a front end engineer, back end engineer, the chief product officer, and myself. My goal
+>>>>>>> Added more spacing and text changes
 
 ![an image alt text]({{base.siteurl}}/assets/img/Time2.png)
 

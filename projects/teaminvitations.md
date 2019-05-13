@@ -3,7 +3,7 @@ layout: page
 ---
 
 
-## Team invitations
+# Team invitations
 
 
 GoFundMe provides a platform for people to create fundraisers to meet a variety of financial needs. According to user research, people often hesitate to create a fundraiser because they fear the burden of managing the fundraiser alone. The goal of GoFundMe team fundraising was allow campaign organizers to share the responsibility of starting and sharing a campaign.

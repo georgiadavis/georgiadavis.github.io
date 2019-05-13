@@ -3,7 +3,11 @@ layout: page
 ---
 
 
+<<<<<<< HEAD
 ## Scholarships Homepage
+=======
+# Scholarship Homepage
+>>>>>>> Added more spacing and text changes
 
 Udacity is an online education company whose mission is to democratize education by offering Nanodegree programs that prepare students to with job-ready technology skills. The goal of Udacity scholarships is to make Nanodegree programs accessible through corporate sponsorships. I designed the scholarship homepage while the lead designer worked on designing the individual scholarship page template.
 

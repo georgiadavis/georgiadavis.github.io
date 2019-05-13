@@ -3,7 +3,7 @@ layout: page
 ---
 
 
-## Code Studio
+# Code Studio
 
 Udacity is an online education company whose mission is to democratize education by offering Nanodegree programs that prepare students to with job-ready technology skills. The goal of the Code Studio was to enable beginner Udacity students to start coding without installing any programming tools.
 

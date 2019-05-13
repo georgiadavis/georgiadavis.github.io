@@ -13,6 +13,11 @@
   font-style: italic;
 }
 
+$charcoal: #2E3D49;
+$gray1: #dae0e4;
+$gray2: #91979C;
+$gray3: #5F666B;
+
 
 * {
   box-sizing: border-box;
@@ -22,15 +27,14 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Domaine', sans-serif;
-  color: #2E3D49;
-  font-size: 18px;
+  color: $charcoal;
+  font-size: 19px;
   line-height: 1.5;
 }
 
-a:link {
-    text-decoration: none;
-    border-bottom: 2px solid #D3DAE0;
-    color:inherit;
+a {
+  text-decoration: underline;
+  color:inherit;
 }
 
 a:visited {
@@ -38,7 +42,7 @@ a:visited {
 }
 
 a:hover {
-    opacity: .6;
+  opacity: 0.8;
 }
 
 h1 {

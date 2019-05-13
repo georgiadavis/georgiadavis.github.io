@@ -3,7 +3,7 @@ layout: page
 ---
 
 
-## Category Pages
+# Category Pages
 
 GoFundMe is an online fundraising platform that enables people to receive donations in times of need. GoFundMe category pages validate that a specific cause is worth raising money on GoFundMe. Redesigning category pages was apart of a wider company effort to update all GoFundMe marketing pages.
 

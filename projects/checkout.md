@@ -3,7 +3,7 @@ layout: page
 ---
 
 
-## Donation Checkout
+# Donation Checkout
 
 GoFundMe is an online fundraising platform that enables people to receive donations in times of need. The donation checkout process enables donors from around the world to support the causes they believe in.
 
