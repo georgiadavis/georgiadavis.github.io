@@ -1,5 +1,19 @@
 @import url('http://weloveiconfonts.com/api/?family=entypo');
-@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700');
+
+@font-face {
+  font-family: "Domaine";
+  src: url("../assets/fonts/DomaineTextWeb-Regular.woff2") format("woff2"),
+       url("../assets/fonts/DomaineTextWeb-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Domaine";
+  src: url("../assets/fonts/DomaineTextWeb-RegularItalic.woff2") format("woff2"),
+       url("../assets/fonts/DomaineTextWeb-RegularItalic.woff") format("woff");
+  font-style: italic;
+}
+
+
 * {
   box-sizing: border-box;
 }
@@ -7,19 +21,20 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: 'Domaine', sans-serif;
   color: #2E3D49;
   font-size: 18px;
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
 a:link {
     text-decoration: none;
-    color:#02B3E4;
+    border-bottom: 2px solid #D3DAE0;
+    color:inherit;
 }
 
 a:visited {
-    color:#02B3E4;
+    color:inherit;
 }
 
 a:hover {
