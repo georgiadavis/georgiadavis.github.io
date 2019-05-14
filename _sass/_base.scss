@@ -45,24 +45,6 @@ a:hover {
   opacity: 0.8;
 }
 
-h1 {
-  margin-bottom: 0;
-  font-size: 32px;
-}
-
-h2 {
-  margin-bottom: 0;
-  font-size: 22px;
-  font-weight: normal;
-  text-align: left;
-}
-
-p {
-  margin-bottom: 0;
-  font-size: 18px;
-  text-align: left;
-}
-
 .work-item {
   border-radius: 0px;
   margin-top: 2em;
@@ -102,7 +84,7 @@ p {
 }
 
 .container-sm {
-  width: 92%;
+  width: 100%;
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
@@ -117,11 +99,4 @@ p {
 
 .text-sm {
   font-size: 12px;
-}
-
-
-@media(max-width:700px){
- .container {
-     width: 80%;
-     float:none;}
 }

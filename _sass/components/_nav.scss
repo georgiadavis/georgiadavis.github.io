@@ -1,9 +1,17 @@
 .nav {
   font-size: 1.4rem;
-  margin-bottom: 120px;
+  margin-bottom: 50px;
+}
+
+@media (min-width: 600px) {
+  .nav {
+    margin-bottom: 120px;
+  }
 }
 
 .nav-logo {
+  position: relative;
+  top: 3px;
   border-bottom: none !important;
   & img {
     transition: all 0.1s ease-in-out;
