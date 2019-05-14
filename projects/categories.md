@@ -7,7 +7,7 @@ layout: page
 
 GoFundMe is an online fundraising platform that enables people to receive donations in times of need. GoFundMe category pages validate that a specific cause is worth raising money on GoFundMe. Redesigning category pages was apart of a wider company effort to update all GoFundMe marketing pages.
 
-The goal for category pages was to increase the number of campaigns started on the GoFundMe platform. I worked with the marketing team, the SEO team, the front-end engineer team, and the lead designer for a duration of three months. I focused on category pages while the lead designer worked on the GoFundMe homepage.
+The goal for category pages was to increase the number of campaigns started on the GoFundMe platform. I worked with the marketing team, the SEO team, the front-end engineer team, and the lead designer for  three months. I focused on category pages while the lead designer worked on the GoFundMe homepage.
 
 ![an image alt text]({{ site.baseurl }}/assets/img/CAT1.png)
 

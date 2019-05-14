@@ -8,7 +8,7 @@ layout: page
 
 GoFundMe provides a platform for people to create fundraisers to meet a variety of financial needs. According to user research, people often hesitate to create a fundraiser because they fear the burden of managing the fundraiser alone. The goal of GoFundMe team fundraising was allow campaign organizers to share the responsibility of starting and sharing a campaign.
 
-The scope of the team invitations feature was small but it impacted mobile web, desktop, and native platforms. I worked as the lead designer along with a product manager, native engineer lead, and two front-end engineers for a duration of one month.
+The scope of the team invitations feature was small but it impacted mobile web, desktop, and native platforms. I worked as the lead designer along with a product manager, native engineer lead, and two front-end engineers for  one month.
 
 ![an image alt text]({{ site.baseurl }}/assets/img/Teams1.png)
 

@@ -7,7 +7,7 @@ layout: page
 
 GoFundMe is an online fundraising platform that enables people to receive donations in times of need. The donation checkout process enables donors from around the world to support the causes they believe in.
 
-The goal for redesigning the donation checkout was to create single experience that supported all payment processors. As the lead designer, I worked alongside the payments product manager and engineering team for the duration of six months.
+The goal for redesigning the donation checkout was to create single experience that supported all payment processors. As the lead designer, I worked alongside the payments product manager and engineering team for  six months.
 
 ![an image alt text]({{ site.baseurl }}/assets/img/Checkout1.png)
 
