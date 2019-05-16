@@ -3,6 +3,12 @@
   margin-bottom: 50px;
 }
 
+.nav-link {
+  &:hover {
+    opacity: 1;
+  }
+}
+
 @media (min-width: 600px) {
   .nav {
     margin-bottom: 120px;

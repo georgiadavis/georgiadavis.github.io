@@ -17,6 +17,7 @@ $charcoal: #2E3D49;
 $gray1: #dae0e4;
 $gray2: #91979C;
 $gray3: #5F666B;
+$blue: #0869DA;
 
 
 * {
@@ -33,28 +34,31 @@ body {
 }
 
 a {
-  text-decoration: underline;
+  transition: 0.15s all ease-in-out;
+  text-decoration: none;
   color:inherit;
+  border-bottom: 2px solid $gray1;
 }
 
 a:visited {
-    color:inherit;
+  color:inherit;
 }
 
 a:hover {
-  opacity: 0.8;
+  color: $blue;
+  text-decoration: none;
 }
 
 .work-item {
   border-radius: 0px;
   margin-top: 2em;
-  transition: 0.15s all ease;
+  transition: 0.15s all ease-in-out;
+  border: 2px solid transparent;
+  padding: 5px;
 }
 
 .work-item:hover {
-  transform: translateY(-2px);
-  opacity: 0.8;
-  cursor: pointer;
+  border-color: $gray1;
 }
 
 .portfolio-item {

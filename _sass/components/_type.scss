@@ -11,7 +11,7 @@ h1 {
 
 h2 {
   margin-bottom: 0;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: normal;
   text-align: left;
 }
@@ -23,7 +23,7 @@ p {
 }
 
 @media (min-width: 600px) {
-  p { font-size: 19px; }
+  p { font-size: 20px; }
   h1 { font-size: 32px; }
-  h2 { font-size: 22px; }
+  h2 { font-size: 24px; }
 }
