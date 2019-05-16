@@ -52,7 +52,8 @@ a:hover {
 .work-item {
   border-radius: 0px;
   margin-top: 2em;
-  transition: 0.15s all ease-in-out;
+  transition: 0.15s border-color ease-in-out;
+  border: none;
   border: 2px solid transparent;
   padding: 5px;
 }
