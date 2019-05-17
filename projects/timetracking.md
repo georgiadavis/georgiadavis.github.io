@@ -17,7 +17,7 @@ Since this feature effected the entire application, I used wireframes to plan al
 
 ![an image alt text]({{base.siteurl}}/assets/img/Time3.png)
 
-Ultimately, the time tracking feature enabled technicians to easily clock in and out, view their live performance data, and manage their working hours.
+The time tracking feature enabled technicians to easily clock in and out, view their live performance data, and manage their working hours.
 
 <div class="clearfix mxn2 container-sm mt4">
   <div class="col col-6">
