@@ -22,3 +22,13 @@ Each category page starts with validating the potential campaign organizer's fun
 
 Finally, I collaborated with the design lead to finalize the category page template and maintain design system patterns that were applied across across all GoFundMe marketing pages. Check out the live version
 <a href="https://www.gofundme.com/start/breast-cancer-fundraising" target="_blank">here. </a>
+
+<div class="clearfix mxn2 container-sm mt4">
+  <div class="col col-6">
+    <a href="/projects/checkout"> ← Donation Checkout  </a>
+  </div>
+
+  <div class="col col-6 right-align">
+    <a href="/projects/teaminvitations"> Team Invitations → </a>
+  </div>
+</div>

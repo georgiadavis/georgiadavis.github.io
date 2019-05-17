@@ -18,7 +18,16 @@ After establishing the ideal user journey for technicians, I audited the existin
 
 ![an image alt text]({{base.siteurl}}/assets/img/DVI3.png)
 
-I created an ecosystem that allows technicians to quickly prioritize, update, and send reports of
-their repair work by clarifying ideal user journeys and creating a library of consistent design components.
+I created an environment that allowed technicians to quickly prioritize, update, and send reports of their repair work by clarifying ideal user journeys and creating a library of consistent design components.
 
 ![an image alt text]({{base.siteurl}}/assets/img/DVI4.png)
+
+<div class="clearfix mxn2 container-sm mt4">
+  <div class="col col-6">
+    <a href="/projects/designsystem"> ← Blueprint Design System </a>
+  </div>
+
+  <div class="col col-6 right-align">
+    <a href="/projects/timetracking"> Time Tracking → </a>
+  </div>
+</div>

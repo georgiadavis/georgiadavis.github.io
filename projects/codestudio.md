@@ -24,3 +24,13 @@ We gathered feedback from usability testing and found a two major pain points in
 Finally, we changed the “Get Help” button to “Resources” since “get help” did not resonate with many independent and self-sufficient learners. The “resources” button was more neutral and encouraged more students to explore this feature.
 
 There was enough evidence from our research to show that the Code Studio was a step in the right direction. As a result of this project, Udacity decided to acquire the Terminal.com engineering team to develop a future iteration of the Code Studio. Read the full case study <a href="https://medium.com/@gyang925/creating-the-code-studio-c46f04051945" target="_blank">here. </a>
+
+<div class="clearfix mxn2 container-sm mt4">
+  <div class="col col-6">
+    <a href="/projects/timetracking"> ← Time Tracking </a>
+  </div>
+
+  <div class="col col-6 right-align">
+    <a href="/projects/scholarships"> Scholarships Homepage → </a>
+  </div>
+</div>

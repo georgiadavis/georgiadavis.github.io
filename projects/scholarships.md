@@ -18,3 +18,12 @@ I received feedback from the design team to have a story driven approach through
 
 Since the launch of Udacity scholarships, there have been over 22,000 students have been awarded scholarships!
 Check out the Udacity Scholarships homepage <a href="https://www.udacity.com/scholarships" target="_blank">here. </a>
+
+<div class="clearfix mxn2 container-sm mt4">
+  <div class="col col-6">
+    <a href="/projects/codestudio"> ← Code Studio </a>
+  </div>
+
+  <div class="col col-6 right-align">
+  </div>
+</div>

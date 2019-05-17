@@ -21,4 +21,14 @@ I developed a specific design system road map that engaged every designer and fr
 
 The GoFundMe campaign tile was an example of a organism we examined in this process. Historically, there were three different versions of the campaign tile: discovery, management, and marketing tiles. After much discussion, we justified the need for these three different versions on the platform. However, through process we were able to bring these three versions in closer in visual alignment.
 
-Check out the impact of the Blueprint design system on the <a href="https://www.gofundme.com/" target="_blank"> GoFundMe homepage </a> .
+Check out the impact of the Blueprint design system on the <a href="https://www.gofundme.com/" target="_blank"> GoFundMe homepage </a>.
+
+<div class="clearfix mxn2 container-sm mt4">
+  <div class="col col-6">
+    <a href="/projects/teaminvitations"> ← Team Invitations </a>
+  </div>
+
+  <div class="col col-6 right-align">
+    <a href="/projects/dvi"> Digital Vehicle Inspection → </a>
+  </div>
+</div>

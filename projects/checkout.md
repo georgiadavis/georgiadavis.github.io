@@ -25,10 +25,9 @@ After conducting user testing on the initial wireframes, I received feedback tha
 
 <div class="clearfix mxn2 container-sm mt4">
   <div class="col col-6">
-    <a href="/"> Category Pages > </a>
   </div>
 
   <div class="col col-6 right-align">
-    <a href="/"> Category Pages > </a>
+    <a href="/projects/categories"> Category Pages → </a>
   </div>
 </div>

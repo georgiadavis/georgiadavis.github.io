@@ -19,3 +19,13 @@ I worked as the lead designer on DVI for a duration of six months. Our team cons
 
 
 ![an image alt text]({{base.siteurl}}/assets/img/Time3.png)
+
+<div class="clearfix mxn2 container-sm mt4">
+  <div class="col col-6">
+    <a href="/projects/dvi"> ← Digital Vehicle Inspection </a>
+  </div>
+
+  <div class="col col-6 right-align">
+    <a href="/projects/codestudio"> Code Studio → </a>
+  </div>
+</div>
