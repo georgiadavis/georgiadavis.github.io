@@ -1,0 +1,28 @@
+.nav {
+  font-size: 1.4rem;
+  margin-bottom: 50px;
+}
+
+.nav-link {
+  &:hover {
+    opacity: 1;
+  }
+}
+
+@media (min-width: 600px) {
+  .nav {
+    margin-bottom: 120px;
+  }
+}
+
+.nav-logo {
+  position: relative;
+  top: 3px;
+  border-bottom: none !important;
+  & img {
+    transition: all 0.1s ease-in-out;
+  }
+  &:hover img {
+    transform: scale(1.1, 1.1);
+  }
+}

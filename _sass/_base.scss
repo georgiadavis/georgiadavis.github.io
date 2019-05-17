@@ -1,0 +1,107 @@
+@import url('http://weloveiconfonts.com/api/?family=entypo');
+
+@font-face {
+  font-family: "Domaine";
+  src: url("../assets/fonts/DomaineTextWeb-Regular.woff2") format("woff2"),
+       url("../assets/fonts/DomaineTextWeb-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Domaine";
+  src: url("../assets/fonts/DomaineTextWeb-RegularItalic.woff2") format("woff2"),
+       url("../assets/fonts/DomaineTextWeb-RegularItalic.woff") format("woff");
+  font-style: italic;
+}
+
+$charcoal: #2E3D49;
+$gray1: #dae0e4;
+$gray2: #91979C;
+$gray3: #5F666B;
+$blue: #0869DA;
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Domaine', sans-serif;
+  color: $charcoal;
+  font-size: 19px;
+  line-height: 1.5;
+}
+
+a {
+  transition: 0.15s all ease-in-out;
+  text-decoration: none;
+  color:inherit;
+  border-bottom: 2px solid $gray1;
+}
+
+a:visited {
+  color:inherit;
+}
+
+a:hover {
+  color: $blue;
+  text-decoration: none;
+}
+
+.work-item {
+  border-radius: 0px;
+  margin-top: 2em;
+  transition: 0.15s border-color ease-in-out;
+  border: none;
+  border: 2px solid transparent;
+  padding: 5px;
+}
+
+.work-item:hover {
+  border-color: $gray1;
+}
+
+.portfolio-item {
+  border-radius: 5px;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+
+.portfolio-img {
+  width: 100%;
+  display: block;
+  margin: auto;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.text-light {
+  opacity: 0.6;
+}
+
+.container {
+  width: 92%;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container-sm {
+  width: 100%;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.wrapper {
+  text-align: center;
+  padding: 10px 0 0;
+}
+
+
+.text-sm {
+  font-size: 12px;
+}
