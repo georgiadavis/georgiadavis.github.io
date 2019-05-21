@@ -19,9 +19,9 @@ Based on user research, we identified our target students were beginners interes
 
 ![an image alt text](https://cdn-images-1.medium.com/max/1600/1*4j0gkICAXNvpIGeUZIEAjQ.gif)
 
-We gathered feedback from usability testing and found a two major pain points in the current implementation. The Submit Project button was not intuitive and students were not eager to use the "Get Help" button.Many students completed their work without knowing they needed to “Submit” their project. As a result, we made the “Submit Project” component more visible to students by relocating the button. We also used a brighter color on the button to highlight the importance of this call to action.
+We gathered feedback from usability testing and found a two major pain points in the beta version. The "Submit Project" button was not intuitive. Many students completed their work without knowing they needed to submit their project. As a result, we made the “Submit Project” button more visible to students by relocating it to a more prominent location and by using a brighter color to draw more attention it.
 
-Finally, we changed the “Get Help” button to “Resources” since “get help” did not resonate with many independent and self-sufficient learners. The “resources” button was more neutral and encouraged more students to explore this feature.
+Also we found students were not eager to use the "Get Help" button. We changed the “Get Help” button to “Resources” because many students were nervous about asking for help. The term “resources” was more neutral and encouraged more students to explore this feature.
 
 There was enough evidence from our research to show that the Code Studio was a step in the right direction. As a result of this project, Udacity decided to acquire the Terminal.com engineering team to develop a future iteration of the Code Studio. Read the full case study <a href="https://medium.com/@gyang925/creating-the-code-studio-c46f04051945" target="_blank">here. </a>
 
