@@ -6,7 +6,7 @@ layout: page
 # Digital Vehicle Inspection (DVI)
 
 
-Kukui is a software company that serves auto repair shops.The goal of the Kukui DVI app is to allow technicians to accurately and efficiently track their work so that shop customers can make confident decisions about their vehicle repairs. As a result, auto repair shops build greater trust with their customers. I worked as the lead designer on DVI for six months. Our team consisted of a front end engineer, back end engineer, the chief product officer, and myself.
+Kukui is a software company that serves auto repair shops. The goal of the Kukui DVI app is to allow technicians to accurately and efficiently track their work so that shop customers can make confident decisions about their vehicle repairs. As a result, auto repair shops build greater trust with their customers. I worked as the lead designer on DVI for six months. Our team consisted of a front end engineer, back end engineer, the chief product officer, and myself.
 
 ![an image alt text]({{ site.baseurl }}/assets/img/DVI1.png)
 
