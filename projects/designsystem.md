@@ -7,11 +7,11 @@ layout: page
 
 GoFundMe is an online fundraising platform that enables people to receive donations in times of need. The Blueprint design system was created to provide a streamlined design and development process, UI standards and documentation for future GoFundMe products.
 
-The goal for the Blueprint design system was to improve cohesiveness on the GoFundMe platform and increase efficiency of the design and front-end development. As the lead systems designer, I worked alongside the entire design team and front-end engineering team over the course of one year to launch the multiple iterations of Blueprint.
+The goal for the Blueprint design system was to improve cohesiveness on the GoFundMe platform and increase efficiency of the design and front-end development process. As the lead systems designer, I worked alongside the entire design team and front-end engineering team over the course of one year to launch the multiple iterations of Blueprint.
 
 ![an image alt text]({{ site.baseurl }}/assets/img/Systems1.png)
 
-Prior to introducing the Blueprint design system, there wasn't a clear process for introducing new design components or auditing existing components. This led to coexisting versions of the same UI elements which caused inconsistent user experiences and engineering debt. It was a challenge to create a design system while many new projects were in flight and existing products had conflicting components. However, I established an a process to discover, decide, document, and design a basic UI library.
+Prior to introducing the Blueprint design system, there wasn't a clear process for introducing new design components or auditing existing components. This led to coexisting versions of the same UI components which caused inconsistent user experiences and engineering debt. It was a challenge to create a design system while many new projects were in flight and existing products had conflicting components. Eventually, I figured out a process to discover, decide, document, and design a basic UI library.
 
 ![an image alt text]({{base.siteurl}}/assets/img/Systems2.png)
 
