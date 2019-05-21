@@ -20,7 +20,9 @@ While creating the initial wireframes, I divided the checkout process into two s
 
 ![an image alt text]({{ site.baseurl }}/assets/img/Checkout3.png)
 
-After conducting user testing on the initial wireframes, I received feedback that donors should be given the option to log-in before entering personal information. Returning donors with a saved credit card would have an optimized experience. Also, the two-step checkout process should be consolidated to one step to reduce the risk of conversion loss. I incorporated these pieces of feedback into the final designs. Read the full case study published in UX Collective <a href="https://uxdesign.cc/reimagining-the-gofundme-checkout-experience-c2e36060f55f" target="_blank">here. </a>
+After conducting user testing on the initial wireframes, I received feedback that donors should be given the option to log-in before entering personal information. Returning donors with a saved credit card would have an optimized experience. Also, the two-step checkout process should be consolidated to one step to reduce the risk of conversion loss. I incorporated these pieces of feedback into the final designs.
+
+Read the full case study published in UX Collective <a href="https://uxdesign.cc/reimagining-the-gofundme-checkout-experience-c2e36060f55f" target="_blank">here </a>.
 
 
 <div class="center mt4">

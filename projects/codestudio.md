@@ -23,7 +23,9 @@ We gathered feedback from usability testing and found a two major pain points in
 
 Also we found students were not eager to use the "Get Help" button. We changed the “Get Help” button to “Resources” because many students were nervous about asking for help. The term “resources” was more neutral and encouraged more students to explore this feature.
 
-There was enough evidence from our research to show that the Code Studio was a step in the right direction. As a result of this project, Udacity decided to acquire the Terminal.com engineering team to develop a future iteration of the Code Studio. Read the full case study <a href="https://medium.com/@gyang925/creating-the-code-studio-c46f04051945" target="_blank">here. </a>
+There was enough evidence from our research to show that the Code Studio was a step in the right direction. As a result of this project, Udacity decided to acquire the Terminal.com engineering team to develop a future iteration of the Code Studio.
+
+Read the full case study <a href="https://medium.com/@gyang925/creating-the-code-studio-c46f04051945" target="_blank">here. </a>
 
 <div class="clearfix mxn2 container-sm mt4">
   <div class="col col-6">

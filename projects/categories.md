@@ -20,8 +20,10 @@ Each category page starts with validating the potential campaign organizer's fun
 
 ![an image alt text]({{base.siteurl}}/assets/img/CAT3.png)
 
-Finally, I collaborated with the design lead to finalize the category page template to maintain design system patterns that were applied across across all GoFundMe marketing pages. Check out a live GoFundMe category page
-<a href="https://www.gofundme.com/start/breast-cancer-fundraising" target="_blank">here. </a>
+Finally, I collaborated with the design lead to finalize the category page template to maintain design system patterns that were applied across across all GoFundMe marketing pages.
+
+Check out a live GoFundMe category page
+<a href="https://www.gofundme.com/start/breast-cancer-fundraising" target="_blank">here </a>.
 
 <div class="clearfix mxn2 container-sm mt4">
   <div class="col col-6">
