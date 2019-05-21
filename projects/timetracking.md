@@ -13,7 +13,7 @@ When auto technicians arrives at their auto shop they usually take their card, p
 
 ![an image alt text]({{base.siteurl}}/assets/img/Time2.png)
 
-Since this feature effected the entire application, I used wireframes to plan all the different states required for adding this feature. By introducing time tracking, I had to add editing work blocks, displaying a clocked in status, switching repair orders, clocking out, deleting work blocks, and viewing daily/weekly stats.
+Since this feature affected the entire DVI application, I used wireframes to plan all the different states required for adding this feature. By introducing time tracking, I had to add an editing state, displaying a clocked in status, switching repair orders, clocking out, deleting work blocks, and viewing daily/weekly stats.
 
 ![an image alt text]({{base.siteurl}}/assets/img/Time3.png)
 
