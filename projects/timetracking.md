@@ -5,11 +5,11 @@ layout: page
 
 # Time Tracking
 
-Kukui is a software company that serves auto repair shops. The time tracking feature replaces manual punch card. It enables auto technicians to clock in and out and receive performance data within the Digital Vehicle Inspection (DVI) app. I was the lead designer on this feature and worked closely with the chief product officer, a front-end engineer, and a back-end engineer.
+Kukui is a software company that serves auto repair shops. The time tracking feature replaces a manual time card. It enables auto technicians to clock in/out and receive performance data within the Digital Vehicle Inspection (DVI) app. I was the lead designer on this feature and worked closely with the chief product officer, a front-end engineer, and a back-end engineer for two months.
 
 ![an image alt text]({{ site.baseurl }}/assets/img/Time1.png)
 
-When auto technicians arrive at their auto shop they usually take their card, punch in, and begin working on a repair order. My goal was to improve the clocking in process by "flagging" repair orders. This meant that technicians were by default required to select the repair order in order to clock in. This way, the time an auto technician is clocked in is always associated to a repair order. This allows shop manager to promote productivity and avoid idle time.
+When auto technicians arrives at their auto shop they usually take their card, punch in, and begin working. Most often, auto shops do not have a digital system for tracking the repair orders a technician worked on each day. My goal was to improve the time tracking process by introducing a digital means of "flagging" repair orders. This meant that technicians clock in by selecting the repair order the will begin working on. Also, technicians can switch working to a different repair order while remaining on the clock. As a result, the time an auto technician is clocked in is always associated to a repair order. This allows shop manager to promote productivity and avoid idle time.
 
 ![an image alt text]({{base.siteurl}}/assets/img/Time2.png)
 
