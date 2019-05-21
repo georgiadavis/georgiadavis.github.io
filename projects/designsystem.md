@@ -25,10 +25,10 @@ Check out the impact of the Blueprint design system on the <a href="https://www.
 
 <div class="clearfix mxn2 container-sm mt4">
   <div class="col col-6">
-    <a href="/projects/teaminvitations"> ← Team Invitations </a>
+    <a href="/projects/teaminvitations"> ← Previous </a>
   </div>
 
   <div class="col col-6 right-align">
-    <a href="/projects/dvi"> Digital Vehicle Inspection → </a>
+    <a href="/projects/codestudio"> Next → </a>
   </div>
 </div>

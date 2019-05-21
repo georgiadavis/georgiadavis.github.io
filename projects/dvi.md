@@ -24,10 +24,10 @@ The final product allowed technicians to quickly prioritize, update, and send re
 
 <div class="clearfix mxn2 container-sm mt4">
   <div class="col col-6">
-    <a href="/projects/designsystem"> ← Blueprint Design System </a>
+    <a href="/projects/scholarships"> ← Previous</a>
   </div>
 
   <div class="col col-6 right-align">
-    <a href="/projects/timetracking"> Time Tracking → </a>
+    <a href="/projects/timetracking"> Next → </a>
   </div>
 </div>

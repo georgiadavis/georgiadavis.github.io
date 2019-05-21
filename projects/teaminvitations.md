@@ -22,10 +22,10 @@ The native invitation experience allowed more option for inviting team members. 
 
 <div class="clearfix mxn2 container-sm mt4">
   <div class="col col-6">
-    <a href="/projects/categories"> ← Category Pages  </a>
+    <a href="/projects/categories"> ← Previous</a>
   </div>
 
   <div class="col col-6 right-align">
-    <a href="/projects/designsystem"> Blueprint Design System → </a>
+    <a href="/projects/designsystem"> Next → </a>
   </div>
 </div>

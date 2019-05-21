@@ -25,10 +25,10 @@ Finally, I collaborated with the design lead to finalize the category page templ
 
 <div class="clearfix mxn2 container-sm mt4">
   <div class="col col-6">
-    <a href="/projects/checkout"> ← Donation Checkout  </a>
+    <a href="/projects/checkout"> ← Previous </a>
   </div>
 
   <div class="col col-6 right-align">
-    <a href="/projects/teaminvitations"> Team Invitations → </a>
+    <a href="/projects/teaminvitations"> Next →  </a>
   </div>
 </div>

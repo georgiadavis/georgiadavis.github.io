@@ -19,12 +19,6 @@ Since this feature effected the entire application, I used wireframes to plan al
 
 The time tracking feature enabled technicians to easily clock in and out, view their live performance data, and manage their working hours.
 
-<div class="clearfix mxn2 container-sm mt4">
-  <div class="col col-6">
-    <a href="/projects/dvi"> ← Digital Vehicle Inspection </a>
-  </div>
-
-  <div class="col col-6 right-align">
-    <a href="/projects/codestudio"> Code Studio → </a>
-  </div>
+<div class="center mt4">
+  <a href="/projects/dvi"> ← Previous </a>
 </div>

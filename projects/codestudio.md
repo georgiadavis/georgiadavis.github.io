@@ -27,10 +27,10 @@ There was enough evidence from our research to show that the Code Studio was a s
 
 <div class="clearfix mxn2 container-sm mt4">
   <div class="col col-6">
-    <a href="/projects/timetracking"> ← Time Tracking </a>
+    <a href="/projects/designsystem"> ← Previous </a>
   </div>
 
   <div class="col col-6 right-align">
-    <a href="/projects/scholarships"> Scholarships Homepage → </a>
+    <a href="/projects/scholarships"> Next → </a>
   </div>
 </div>
