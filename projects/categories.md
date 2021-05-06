@@ -27,10 +27,10 @@ Check out a live GoFundMe category page
 
 <div class="clearfix mxn2 container-sm mt4">
   <div class="col col-6">
-    <a href="/projects/checkout"> ← Previous </a>
+    <a href="/projects/checkout"> ← GoFundMe Checkout </a>
   </div>
 
   <div class="col col-6 right-align">
-    <a href="/projects/teaminvitations"> Next →  </a>
+    <a href="/projects/teaminvitations"> GoFundMe Team Invitations →  </a>
   </div>
 </div>

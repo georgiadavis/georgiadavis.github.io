@@ -29,10 +29,10 @@ Read the full case study <a href="https://medium.com/@gyang925/creating-the-code
 
 <div class="clearfix mxn2 container-sm mt4">
   <div class="col col-6">
-    <a href="/projects/designsystem"> ← Previous </a>
+    <a href="/projects/teaminvitations"> ← GoFundMe Team Invitations </a>
   </div>
 
   <div class="col col-6 right-align">
-    <a href="/projects/scholarships"> Next → </a>
+    <a href="/projects/scholarships"> Udacity Scholarships → </a>
   </div>
 </div>

@@ -26,5 +26,5 @@ Read the full case study published in UX Collective <a href="https://uxdesign.cc
 
 
 <div class="center mt4">
-  <a href="/projects/categories"> Next → </a>
+  <a href="/projects/categories"> GoFundMe Category Pages → </a>
 </div>

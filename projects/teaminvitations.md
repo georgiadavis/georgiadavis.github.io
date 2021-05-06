@@ -24,10 +24,10 @@ Check out GoFundMe teams <a href="https://www.gofundme.com/team-fundraising" tar
 
 <div class="clearfix mxn2 container-sm mt4">
   <div class="col col-6">
-    <a href="/projects/categories"> ← Previous</a>
+    <a href="/projects/categories"> ← GoFundMe Category Pages</a>
   </div>
 
   <div class="col col-6 right-align">
-    <a href="/projects/designsystem"> Next → </a>
+    <a href="/projects/codestudio"> Udacity Code Studio → </a>
   </div>
 </div>

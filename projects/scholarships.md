@@ -20,12 +20,7 @@ Since the launch of Udacity scholarships, there have been over 22,000 students h
 
 Check out the Udacity Scholarships homepage <a href="https://www.udacity.com/scholarships" target="_blank">here </a>.
 
-<div class="clearfix mxn2 container-sm mt4">
   <div class="col col-6">
-    <a href="/projects/codestudio"> ← Previous </a>
+    <a href="/projects/codestudio"> ← Udacity Code Studio </a>
   </div>
-
-  <div class="col col-6 right-align">
-    <a href="/projects/dvi"> Next → </a>
-  </div>
-</div>
+  
