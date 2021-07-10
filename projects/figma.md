@@ -27,10 +27,10 @@ Interested in Figma? Check out the
 
 <div class="clearfix mxn2 container-sm mt4">
   <div class="col col-6">
-    <a href="/projects/checkout"> ← GoFundMe Checkout </a>
+    <a href="/projects/idm"> ← Clever Identity Management </a>
   </div>
 
   <div class="col col-6 right-align">
-    <a href="/projects/teaminvitations"> GoFundMe Team Invitations →  </a>
+    <a href="/projects/checkout"> GoFundMe Checkout →  </a>
   </div>
 </div>

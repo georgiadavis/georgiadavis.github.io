@@ -24,7 +24,12 @@ After conducting user testing on the initial wireframes, I received feedback tha
 
 Read the full case study published in UX Collective <a href="https://uxdesign.cc/reimagining-the-gofundme-checkout-experience-c2e36060f55f" target="_blank">here </a>.
 
+<div class="clearfix mxn2 container-sm mt4">
+  <div class="col col-6">
+    <a href="/projects/figma"> ← Learning Figma </a>
+  </div>
 
-<div class="center mt4">
-  <a href="/projects/categories"> GoFundMe Category Pages → </a>
+  <div class="col col-6 right-align">
+    <a href="/projects/categories"> GoFundMe Category Pages →  </a>
+  </div>
 </div>

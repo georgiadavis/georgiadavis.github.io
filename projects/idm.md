@@ -5,11 +5,7 @@ layout: page
 
 # Identity Management
 
-Clever is a digital learning platform for K12 schools. Clever makes it easier for students and teachers to use thousands of learning application by providing single sign-on through the Clever portal.
-
-While Clever provides seamless access to education applications, school districts still face the IT challenge of creating and maintaining accurate user information in identity systems. User data constantly changes and if the identity system do not remain accurate, students and teachers can lose access to their digital learning software.
-
-Current solutions for provisioning identities are designed for organizations that have large budgets and dedicated IT teams. They require installing software, managing servers, scripting workflows and understanding the technical details of multiple systems. To automate account provisioning, district IT teams have to go through months long sales and onboarding processes. They need to contact technical support to manage changes to their workflows and resolve major changes. 
+Clever provides seamless access to education application for students and teachers. However, school districts still face the IT challenge of creating and maintaining user accounts in identity systems, like Google. User data constantly changes and if Google accounts do not remain accurate, students and teachers will lose access to their digital learning software.
 
 My team set out to create an affordable and easy-to-use Google account provisioning solution for district administrators (DAs) that are overpaying for enterprise solutions or relying on manual scripts.
 
@@ -27,17 +23,12 @@ Through these user research calls, I developed product principles that guided my
 
 Once Clever IDM Essentials launched, the user feedback was overwhelmingly positive. In a user call, one DA said:
 
-"The setup wizard was very simple and I really appreciated that. I've gone through three or four different identity provider products now over the last several years and this one was by far the only one I could say that I would have comfortability with anyone with any technical level, setting up on their own, without having somebody hold their hand and walk them through it."
+_"The setup wizard was very simple...anyone [can] with any technical level set it up on their own, without having somebody hold their hand and walk them through it."_
 
 To learn more about Clever IDM Essentials check out the
 <a href=" https://clever.com/appstore/clever-idm" target="_blank">Clever IDM Appstore page </a>.
 
-<div class="clearfix mxn2 container-sm mt4">
-  <div class="col col-6">
-    <a href="/projects/checkout"> ← GoFundMe Checkout </a>
-  </div>
 
-  <div class="col col-6 right-align">
-    <a href="/projects/teaminvitations"> GoFundMe Team Invitations →  </a>
-  </div>
+<div class="center mt4">
+  <a href="/projects/figma"> Learning Figma → </a>
 </div>
