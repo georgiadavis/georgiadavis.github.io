@@ -5,24 +5,25 @@ layout: page
 
 # Learning Figma
 
-Clever is a digital learning platform for K12 schools. Clever makes it easier for students and teachers to use thousands of learning application by providing single sign-on through the Clever portal.
 
 
-![an image alt text]({{ site.baseurl }}/assets/img/figma1.png)
+I built the <a href=" https://clever.com/appstore/clever-idm" target="_blank">Learning Figma</a> video course to make design accessible to everyone. I created this course because it's important to me to always to teaching the things I am passionate about. Figma makes it easy to collaborate with other designers, engineers, and product managers.
 
-My role as the lead designer
 
-![an image alt text]({{base.siteurl}}/assets/img/figma2.png)
+![an image alt text]({{ site.baseurl }}/assets/img/figma2.png)
 
-I conducted 20 user research calls with DAs to understand their main challenges with identity management and account provisioning. I mapped the core user journeys for Google account provisioning and learned that the most challenging steps were setting up email domain templates and automating organizational units.  
+I tailored this course so that anyone can get started with Figma. I’m a big believer in learning by doing. In every lesson, students learn Figma tools through a real design project. I also teach students about the the Figma community, a place where they can learn from other designers and find inspiration.
+
+![an image alt text]({{base.siteurl}}/assets/img/figma1.png)
+
+Students start the course by learning basic tools in Figma through recreating the Figma logo. Then, they design a plant care app through building components, using autolayout and applying animations to create an interactive prototype.
 
 
 ![an image alt text]({{base.siteurl}}/assets/img/figma3.png)
 
-Once Clever IDM Essentials launched, the user feedback was overwhelmingly positive. In a user call, one DA said:
 
-Check out the
-<a href=" https://clever.com/appstore/clever-idm" target="_blank">Learning Figma website </a>.
+Interested in Figma? Check out the
+<a href=" https://clever.com/appstore/clever-idm" target="_blank">Learning Figma </a> video course.
 
 <div class="clearfix mxn2 container-sm mt4">
   <div class="col col-6">
