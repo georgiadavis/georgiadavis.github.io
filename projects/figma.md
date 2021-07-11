@@ -7,7 +7,7 @@ layout: page
 
 
 
-I built the <a href=" https://clever.com/appstore/clever-idm" target="_blank">Learning Figma</a> video course to make design accessible to everyone. I created this course because it's important to me to always to teaching the things I am passionate about. Figma makes it easy to collaborate with other designers, engineers, and product managers.
+I built the <a href="https://learningfigma.com" target="_blank">Learning Figma</a> video course to make design accessible to everyone. I created this course because it's important to me to always to teaching the things I am passionate about. Figma makes it easy to collaborate with other designers, engineers, and product managers.
 
 
 ![an image alt text]({{ site.baseurl }}/assets/img/figma2.png)
@@ -23,7 +23,7 @@ Students start the course by learning basic tools in Figma through recreating th
 
 
 Interested in Figma? Check out the
-<a href=" https://clever.com/appstore/clever-idm" target="_blank">Learning Figma </a> video course.
+<a href="https://learningfigma.com" target="_blank">Learning Figma </a> video course.
 
 <div class="clearfix mxn2 container-sm mt4">
   <div class="col col-6">
