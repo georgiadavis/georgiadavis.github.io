@@ -5,13 +5,15 @@ layout: page
 
 # Identity Management
 
-Clever provides seamless access to education application for students and teachers. However, school districts still face the IT challenge of creating and maintaining user accounts in identity systems, like Google. User data constantly changes and if Google accounts do not remain accurate, students and teachers will lose access to their digital learning software.
+Clever is a platform that provides teachers and students access to thousands of learning applications through a single sign-on portal.
+
+While Clever provides seamless access to education applications, school districts still face the IT challenge of creating and maintaining accurate user data in identity systems like Google. User data constantly changes and if Google accounts do not remain accurate, students and teachers will lose access to their digital learning software.
 
 My team set out to create an affordable and easy-to-use Google account provisioning solution for district administrators (DAs) that are overpaying for enterprise solutions or relying on manual scripts.
 
 ![an image alt text]({{ site.baseurl }}/assets/img/idm1.png)
 
-My role as the lead designer was to design an entirely new product called Clever IDM Essentials that focused on self-service setup and easy lifecycle management for Google account provisioning. Our goal was to enable DAs to automatically create and manage Google accounts without writing any code so students and teachers could have access to their learning applications. I was responsible for designing the beginning to end user experience that included product discovery, product preview, purchasing and ongoing management.
+My role as the lead designer was to design an entirely new product called Clever IDM Essentials that focused on self-service setup and easy lifecycle management for Google account provisioning. My goal was to enable DAs to automatically create and manage Google accounts without writing any code so students and teachers could have access to their learning applications. I was responsible for designing the beginning to end user experience which included product discovery, onboarding setup, purchasing and ongoing management.
 
 ![an image alt text]({{base.siteurl}}/assets/img/idm2.png)
 
