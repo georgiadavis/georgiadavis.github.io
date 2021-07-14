@@ -7,7 +7,7 @@ layout: page
 
 
 
-I built the <a href="https://learningfigma.com" target="_blank">Learning Figma</a> video course to make design accessible to everyone. I created this course because it's important to me to always to teaching the things I am passionate about. Figma makes it easy to collaborate with other designers, engineers, and product managers.
+I built the <a href="https://learningfigma.com" target="_blank">Learning Figma</a> video course to make design accessible to everyone. I created this course because I love teaching the things I am passionate about. Figma makes it easy to collaborate with other designers, engineers, and product managers.
 
 
 ![an image alt text]({{ site.baseurl }}/assets/img/figma2.png)
