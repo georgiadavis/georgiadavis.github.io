@@ -11,7 +11,16 @@ main { padding: 6.5rem 1.5rem 10rem; }
 .intro { max-width: 72rem; margin: 0 auto; text-align: center; }
 h1 { margin: 0 0 1.65rem; font-size: clamp(2.5rem, 4vw, 3.6rem); letter-spacing: -.065em; line-height: 1.1; }
 .intro p { margin: 0; color: #929292; font-size: clamp(1.5rem, 3.1vw, 2.85rem); line-height: 1.28; letter-spacing: -.055em; }
-.work { display: flex; flex-direction: column; align-items: center; margin-top: 3.5rem; }
+.work { position: relative; display: flex; flex-direction: column; align-items: center; margin-top: 3.5rem; }
+.camera-button { position: relative; z-index: 3; padding: 0; border: 0; background: none; cursor: pointer; font: inherit; }
+.camera-button:focus-visible { outline: 2px solid #080808; outline-offset: 8px; border-radius: 1rem; }
+.camera-button:disabled { cursor: wait; }
+.print-canvas { display: none; position: absolute; inset: 0; width: 100%; height: 100%; z-index: 4; pointer-events: none; }
+.camera-lip { display: none; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: min(18.5rem, 75vw); height: auto; clip-path: inset(0 0 10.16%); z-index: 5; pointer-events: none; }
+.work.is-printing .print-canvas, .work.is-printing .camera-lip { display: block; }
+.work.is-printing .polaroid { visibility: hidden; }
+.work.is-printing .photo-stack::before, .work.is-printing .photo-stack::after { opacity: 0; }
+.photo-stack::before, .photo-stack::after { transition: opacity .4s; }
 .camera { display: block; width: min(18.5rem, 75vw); height: auto; }
 .photo-stack { position: relative; isolation: isolate; width: min(19rem, 78vw); margin-top: 2.65rem; }
 .photo-stack::before, .photo-stack::after { content: ''; position: absolute; inset: 0; z-index: -1; border-radius: .6rem; background: #fff; box-shadow: 0 .2rem 1rem #00000012; }
@@ -29,7 +38,7 @@ footer a:focus-visible { outline: 2px solid currentColor; outline-offset: 5px; b
   h1 { margin-bottom: 1.4rem; }
   .intro p { letter-spacing: -.045em; line-height: 1.35; }
   .work { margin-top: 2.5rem; }
-  .camera { width: 15rem; max-width: 75vw; }
+  .camera, .camera-lip { width: 15rem; max-width: 75vw; }
   .photo-stack { margin-top: 2.1rem; width: 16rem; max-width: 78vw; }
   figcaption { font-size: .9rem; }
   footer a { font-size: 1.35rem; }

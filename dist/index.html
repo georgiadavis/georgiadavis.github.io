@@ -15,7 +15,11 @@
         <p>I’m a designer based in San Francisco, currently building WhatsApp. Before that, I spent time working in the Meta Superintelligence Labs, Reality Labs, Clever, GoFundMe, and Udacity.</p>
       </header>
       <section class="work" aria-label="Selected work">
-        <img class="camera" src="assets/camera.png" width="780" height="814" alt="Vintage instant camera with a rainbow stripe">
+        <button class="camera-button" type="button" aria-label="Print a Polaroid" title="Print a Polaroid">
+          <img class="camera" src="assets/camera.png" width="797" height="817" alt="Vintage instant camera with a rainbow stripe">
+        </button>
+        <canvas class="print-canvas" aria-hidden="true"></canvas>
+        <img class="camera-lip" src="assets/camera.png" width="797" height="817" alt="" aria-hidden="true">
         <div class="photo-stack">
           <figure class="polaroid">
             <!-- To add your work, replace the div below with:
@@ -31,5 +35,6 @@
       <!-- Change this URL if you'd prefer a different social profile. -->
       <a href="https://www.instagram.com/georgiatdavis/">@georgiatdavis</a>
     </footer>
+    <script src="print.js" defer></script>
   </body>
 </html>
