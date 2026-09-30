@@ -29,8 +29,44 @@
     // Paper effects while a sheet is moving (all fade out before it lands)
     highlight: 1, // specular streaks and gloss sweep; 0 = off
     ripple: 1, // ripple in the lighting and the image; 0 = flat paper
+
+    // Shimmer: the glossy light on a sheet while it moves (all scaled by highlight).
+    // Times are fractions of a print's flight: 0 = starts ejecting, ~0.44 = fully
+    // out of the camera, 1 = lands.
+    shimmerStrength: 0.18, // brightness of the gloss band that sweeps across the sheet
+    shimmerWidth: 0.2, // thickness of the band, as a fraction of the sheet
+    shimmerAngle: 0, // band direction in degrees: 0 = level, sweeping top to bottom
+    shimmerStart: 0.3, // when the band enters the top edge of the sheet
+    shimmerEnd: 0.85, // when it has left the bottom edge (keep below 1)
+    shimmerSpecular: 0.22, // brightness of the glints (ripple + the flash as it tips back)
+    shimmerSharpness: 30, // glint size: lower = broad soft glow, higher = small hot spots
+    shimmerLightSide: -1, // light left/right, about -1 to 1: moves where glints appear
+    shimmerBow: 0.25, // how much the paper bows across its width, so the sides catch the light
+    effectsFadeStart: 0.5, // when glints, lighting and ripple start fading out
+    effectsFadeEnd: 0.92, // when they are gone (must be at most 1 for a clean landing)
+
+    // Developing: the photo fades up from dark like real instant film
+    develop: true, // false = photos come out fully developed
+    developDelay: 1000, // ms after a print starts before the image begins to appear
+    developDuration: 1300, // ms to fully develop; can outlast the flight (it keeps developing on the table)
+    developEase: 1.6, // 1 = steady fade, higher = stays dark longer then blooms
+    developColor: "#1f2427", // shade of the undeveloped film
+    developDesaturate: 0.0, // how much color lags behind brightness (0 = none, 1 = starts fully gray)
   };
   // ---------------------------------------------------------------------------
+
+  // How developed a print is (0–1), given ms since it started printing.
+  function developAt(ms) {
+    if (!tuning.develop) return 1;
+    const t = Math.min(
+      1,
+      Math.max(0, (ms - tuning.developDelay) / tuning.developDuration)
+    );
+    return Math.pow(t, tuning.developEase);
+  }
+  const developRGB = [1, 3, 5].map(
+    (i) => parseInt(tuning.developColor.slice(i, i + 2), 16) / 255
+  );
 
   const work = document.querySelector(".work");
   const button = document.querySelector(".camera-button");
@@ -105,6 +141,9 @@
   function makePrint({ src, alt }, category) {
     const print = card.cloneNode(true);
     const image = print.querySelector(".project-image");
+    // Photos are preloaded, so decode in the same frame: no pink flash at handoff.
+    image.decoding = "sync";
+    image.loading = "eager";
     image.src = src;
     image.alt = alt;
     print.classList.add("printed-polaroid", `${category}-photo`);
@@ -222,7 +261,7 @@
     };
   });
 
-  function land(index) {
+  function land(index, developed = false) {
     const { x, y, angle } = destinations[index];
     // The WebGL sheet arrives at this exact pose; the DOM takes over at rest.
     const item = {
@@ -233,6 +272,7 @@
       home: [x, y, angle],
     };
     place(item);
+    if (!developed) keepDeveloping(item.element);
     tabled.push(item);
     landed.push(item.element);
     current = index + 1;
@@ -242,10 +282,49 @@
     );
   }
 
+  // Picks up development where the WebGL sheet left off, on the same curve:
+  // a film-colored veil fades out while the colour saturates.
+  function keepDeveloping(print) {
+    const start = developAt(duration);
+    if (start >= 1) return;
+    const image = print.querySelector(".project-image");
+    const veil = document.createElement("div");
+    veil.style.cssText =
+      `position:absolute;left:${image.offsetLeft}px;top:${image.offsetTop}px;` +
+      `width:${image.offsetWidth}px;height:${image.offsetHeight}px;background:${tuning.developColor};pointer-events:none`;
+    print.append(veil);
+    const remaining = tuning.developDelay + tuning.developDuration - duration;
+    const steps = 24;
+    const samples = Array.from({ length: steps + 1 }, (_, i) =>
+      developAt(duration + (remaining * i) / steps)
+    );
+    const timing = {
+      duration: Math.max(remaining, 1),
+      easing: "linear",
+      fill: "forwards",
+    };
+    veil
+      .animate(
+        samples.map((d) => ({ opacity: 1 - d })),
+        timing
+      )
+      .finished.then(() => veil.remove());
+    image
+      .animate(
+        samples.map((d) => ({
+          filter: `saturate(${1 - (1 - d) * tuning.developDesaturate})`,
+        })),
+        timing
+      )
+      .finished.then(() => {
+        image.style.filter = "";
+      });
+  }
+
   function staticStack() {
     stop();
     clearPrints();
-    for (let i = 0; i < total; i++) land(i);
+    for (let i = 0; i < total; i++) land(i, true);
     current = total;
   }
 
@@ -262,6 +341,8 @@
     uniform vec3 u_pose;
     uniform vec2 u_plane;
     uniform float u_ripple;
+    uniform vec3 u_light;
+    uniform vec2 u_fade;
     varying vec2 v_uv;
     varying float v_shade;
     varying float v_y;
@@ -307,13 +388,14 @@
       gl_Position = vec4(x / u_view.x * 2.0 - 1.0, 1.0 - y / u_view.y * 2.0, 0.0, 1.0);
       // Fresh paper ripples and catches the light; all of it fades out before
       // landing so the sheet matches the flat HTML card exactly at handoff.
-      float fx = 1.0 - smoothstep(0.5, 0.92, p);
+      float fx = 1.0 - smoothstep(u_fade.x, u_fade.y, p);
       float held = smoothstep(0.0, u_card.w * 0.35, max(0.0, top + a_uv.y * u_card.w - anchor));
       float phase = a_uv.y * 9.0 - p * 30.0;
       float wave = held * fx;
       // Surface normal from the curl, the tip-back and the travelling ripple.
       float pitch = theta + tilt + cos(phase) * 0.22 * wave * u_ripple;
-      float roll = sin(a_uv.x * 3.14159 + p * 11.0) * (0.14 * wave + (a_uv.x - 0.5) * 0.25 * wave) * u_ripple;
+      // Mirror-symmetric bow across the width, breathing slightly as it moves.
+      float roll = (a_uv.x - 0.5) * u_light.z * (1.0 + 0.4 * sin(p * 11.0)) * wave * u_ripple;
       v_normal = vec3(sin(roll), -sin(pitch), cos(pitch) * cos(roll));
       v_fx = fx;
     }
@@ -326,12 +408,16 @@
     uniform vec4 u_inset;
     uniform float u_ripple;
     uniform float u_highlight;
+    uniform vec3 u_light;
+    uniform vec4 u_shimmer;
+    uniform vec2 u_sweep;
+    uniform vec2 u_develop;
+    uniform vec3 u_film;
     varying vec2 v_uv;
     varying float v_shade;
     varying float v_y;
     varying vec3 v_normal;
     varying float v_fx;
-    const vec3 LIGHT = vec3(-0.35, -0.55, 0.76);
     void main() {
       if (v_y < u_slot) discard;
       float p = u_progress;
@@ -339,17 +425,30 @@
       vec2 warp = vec2(sin(v_uv.y * 19.0 + p * 24.0), sin(v_uv.x * 15.0 - p * 20.0)) * 0.003 * v_fx * u_ripple;
       vec4 paper = texture2D(u_texture, v_uv + warp);
       vec3 n = normalize(v_normal);
-      vec3 l = normalize(LIGHT);
+      // Side light is scaled to the paper's bow so it moves glints across the sheet.
+      vec3 l = normalize(vec3(u_light.x * 0.3, -0.55, 0.76));
       // Relight relative to a flat, front-facing sheet so the rest pose is unchanged.
       float diffuse = 1.0 + 0.45 * (dot(n, l) - l.z) * v_fx;
-      float specular = pow(max(dot(n, normalize(l + vec3(0.0, 0.0, 1.0))), 0.0), 60.0);
-      // A soft highlight band glides diagonally across the gloss as it ejects.
-      float sweep = -0.4 + p * 2.6;
-      float band = exp(-pow((v_uv.y * 0.85 + v_uv.x * 0.45 - sweep) * 5.0, 2.0));
+      float specular = pow(max(dot(n, normalize(l + vec3(0.0, 0.0, 1.0))), 0.0), u_shimmer.w);
+      // A soft highlight band glides across the gloss as it ejects.
+      vec2 across = vec2(sin(u_shimmer.z), cos(u_shimmer.z));
+      float along = dot(v_uv - 0.5, across) + 0.5;
+      // Enters the top edge at shimmerStart and has left the bottom by shimmerEnd.
+      float travel = (p - u_sweep.x) / max(u_sweep.y - u_sweep.x, 0.001);
+      float sweep = mix(-2.0 * u_shimmer.y, 1.0 + 2.0 * u_shimmer.y, travel);
+      float band = exp(-pow((along - sweep) / max(u_shimmer.y, 0.001), 2.0))
+        * step(0.0, travel) * step(travel, 1.0);
       float photo = step(u_inset.x, v_uv.x) * step(v_uv.x, u_inset.z) * step(u_inset.y, v_uv.y) * step(v_uv.y, u_inset.w);
-      float gloss = (specular * 0.22 + band * 0.13) * mix(0.35, 1.0, photo) * v_fx * u_highlight;
+      float gloss = (specular * u_light.y * v_fx + band * u_shimmer.x) * mix(0.35, 1.0, photo) * u_highlight;
       float slotShadow = 1.0 - 0.18 * exp(-max(0.0, v_y - u_slot) / 10.0);
-      vec3 color = paper.rgb * slotShadow * v_shade * diffuse + gloss;
+      // Undeveloped film: dark and desaturated, blooming into the photo.
+      vec3 base = paper.rgb;
+      float developed = u_develop.x;
+      float gray = dot(base, vec3(0.299, 0.587, 0.114));
+      vec3 film = mix(base, vec3(gray), (1.0 - developed) * u_develop.y);
+      film = mix(u_film, film, developed);
+      base = mix(base, film, photo);
+      vec3 color = base * slotShadow * v_shade * diffuse + gloss;
       gl_FragColor = vec4(min(color, 1.0), paper.a);
     }
   `;
@@ -429,6 +528,12 @@
         "plane",
         "inset",
         "ripple",
+        "light",
+        "shimmer",
+        "sweep",
+        "fade",
+        "develop",
+        "film",
         "highlight",
       ].map((name) => [name, gl.getUniformLocation(program, `u_${name}`)])
     );
@@ -514,7 +619,7 @@
     }
 
     function draw(now) {
-      const elapsed = now - base;
+      const elapsed = window.__t ?? now - base;
       // Hand finished sheets to the DOM, oldest first.
       // Sheets touch down while still gliding, a little before they come to rest.
       while (
@@ -555,6 +660,22 @@
       );
       gl.uniform1f(uniforms.ripple, tuning.ripple);
       gl.uniform1f(uniforms.highlight, tuning.highlight);
+      gl.uniform3f(
+        uniforms.light,
+        tuning.shimmerLightSide,
+        tuning.shimmerSpecular,
+        tuning.shimmerBow
+      );
+      gl.uniform4f(
+        uniforms.shimmer,
+        tuning.shimmerStrength,
+        tuning.shimmerWidth,
+        (tuning.shimmerAngle * Math.PI) / 180,
+        tuning.shimmerSharpness
+      );
+      gl.uniform2f(uniforms.sweep, tuning.shimmerStart, Math.min(tuning.shimmerEnd, 1));
+      gl.uniform2f(uniforms.fade, tuning.effectsFadeStart, Math.min(tuning.effectsFadeEnd, 1));
+      gl.uniform3f(uniforms.film, ...developRGB);
       gl.uniform1f(
         uniforms.slot,
         cameraRect.top - bounds.top + cameraRect.height * (734 / 817)
@@ -571,6 +692,11 @@
         const destination = destinations[index];
         gl.bindTexture(gl.TEXTURE_2D, textures[sequence[index]]);
         gl.uniform1f(uniforms.progress, p);
+        gl.uniform2f(
+          uniforms.develop,
+          developAt(elapsed - index * interval),
+          tuning.developDesaturate
+        );
         gl.uniform3f(
           uniforms.pose,
           destination.x * cardWidth,
