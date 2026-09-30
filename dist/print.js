@@ -40,10 +40,18 @@
     shimmerEnd: 0.85, // when it has left the bottom edge (keep below 1)
     shimmerSpecular: 0.22, // brightness of the glints (ripple + the flash as it tips back)
     shimmerSharpness: 30, // glint size: lower = broad soft glow, higher = small hot spots
-    shimmerLightSide: -1, // light left/right, about -1 to 1: moves where glints appear
+    shimmerLightSide: 0, // light left/right, about -1 to 1: moves where glints appear
     shimmerBow: 0.25, // how much the paper bows across its width, so the sides catch the light
     effectsFadeStart: 0.5, // when glints, lighting and ripple start fading out
     effectsFadeEnd: 0.92, // when they are gone (must be at most 1 for a clean landing)
+
+    // Flash: fires as each photo is taken, just before it starts ejecting
+    flash: true, // false = no flash
+    flashLead: 250, // ms between the flash and the print starting to come out
+    flashStrength: 0.9, // peak brightness, 0–1
+    flashRise: 60, // ms to reach full brightness
+    flashDuration: 900, // ms for the whole flash, including the fade out
+    flashBloom: 1, // size of the soft glow around the flash window (0 = window only)
 
     // Developing: the photo fades up from dark like real instant film
     develop: true, // false = photos come out fully developed
@@ -87,6 +95,22 @@
   const interval = tuning.printInterval;
   const total = tuning.prints;
   let nudged = 0;
+  let flashed = 0;
+  const flashLight = document.querySelector(".camera-flash");
+  flashLight.style.setProperty("--flash-bloom", tuning.flashBloom);
+
+  function fireFlash() {
+    if (!tuning.flash) return;
+    const rise = Math.min(tuning.flashRise / tuning.flashDuration, 0.5);
+    flashLight.animate(
+      [
+        { opacity: 0, easing: "ease-out" },
+        { opacity: tuning.flashStrength, offset: rise, easing: "cubic-bezier(.2, .6, .3, 1)" },
+        { opacity: 0 },
+      ],
+      { duration: tuning.flashDuration }
+    );
+  }
   const stack = document.querySelector(".photo-stack");
   stack.style.setProperty("--push-duration", `${tuning.pushDuration}ms`);
   let current = 0;
@@ -619,7 +643,7 @@
     }
 
     function draw(now) {
-      const elapsed = window.__t ?? now - base;
+      const elapsed = now - base;
       // Hand finished sheets to the DOM, oldest first.
       // Sheets touch down while still gliding, a little before they come to rest.
       while (
@@ -627,6 +651,11 @@
         elapsed >= nudged * interval + duration * tuning.pushAt
       )
         nudge(nudged++);
+      // The flash fires a moment before each print starts to eject.
+      while (flashed < total && elapsed >= flashed * interval - tuning.flashLead) {
+        flashed++;
+        fireFlash();
+      }
       while (current < total && elapsed >= current * interval + duration)
         land(current);
       if (current >= total) {
@@ -705,7 +734,7 @@
         );
         gl.drawArrays(gl.TRIANGLES, 0, vertices.length / 2);
       }
-      const printing = Math.min(total, Math.floor(elapsed / interval) + 1);
+      const printing = Math.max(1, Math.min(total, Math.floor(elapsed / interval) + 1));
       button.setAttribute(
         "aria-label",
         `Printing Polaroid ${printing} of ${total}`
@@ -729,11 +758,13 @@
       clearPrints();
       current = 0;
       nudged = 0;
+      flashed = 0;
       running = true;
       button.disabled = true;
       button.setAttribute("aria-label", `Printing Polaroid 1 of ${total}`);
       work.classList.add("is-printing");
-      base = performance.now();
+      // Leave room for the first flash before the first print ejects.
+      base = performance.now() + (tuning.flash ? tuning.flashLead : 0);
       frame = requestAnimationFrame(draw);
     }
 
