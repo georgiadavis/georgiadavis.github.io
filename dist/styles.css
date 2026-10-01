@@ -10,8 +10,11 @@
 
 :root {
   font-family: Georgia, "Times New Roman", serif;
-  color: #080808;
-  background: #f5f5f5;
+  /* Theme colours; index.html picks one of four at random on load. */
+  --bg: #dbf2ff;
+  --ink: #0600d9;
+  color: var(--ink);
+  background: var(--bg);
   font-synthesis: none;
 }
 
@@ -42,15 +45,16 @@ main {
   font-family: "Forevs", "Iowan Old Style", "Palatino Linotype", Palatino,
     Georgia, serif;
   font-weight: 400;
-  font-size: max(1.125rem, calc(min(100vw - 3rem, 1945.333px) * 0.02296));
-  line-height: 1.18;
-  color: #000;
+  font-size: max(1.375rem, calc(min(100vw - 3rem, 1945.333px) * 0.02296));
+  line-height: 1.26;
+  color: var(--ink);
   text-wrap: balance;
   -webkit-font-smoothing: antialiased;
 }
 .name-logo {
   display: block;
-  width: 12.405755%; /* 362-unit logo at the same scale as the 67-unit intro type */
+  /* 362-unit logo at the same scale as the 67-unit intro type; never smaller than phones can read. */
+  width: max(11.405755%, 6.75rem);
   height: auto;
   margin: 0 auto;
 }
@@ -65,6 +69,8 @@ main {
   padding-bottom: calc(var(--camera-width) * 2);
 }
 .camera-button {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
   position: relative;
   z-index: 3;
   padding: 0;
@@ -74,7 +80,7 @@ main {
   font: inherit;
 }
 .camera-button:focus-visible {
-  outline: 2px solid #080808;
+  outline: 2px solid var(--ink);
   outline-offset: 8px;
   border-radius: 1rem;
 }
@@ -149,13 +155,17 @@ main {
   position: absolute;
   inset: 0;
   transform-origin: 50% 65%;
-  box-shadow: 0 6px 18px #0000001a, 0 1px 3px #0000000d;
+  /* Shadows are tinted with the theme ink so they sit naturally on the ground. */
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--ink) 16%, transparent),
+    0 1px 3px color-mix(in srgb, var(--ink) 10%, transparent);
   /* Cards already on the table slide when a new print shoves into them. */
   transition: transform var(--push-duration, 1.4s)
     cubic-bezier(0.18, 0.75, 0.25, 1);
 }
 /* Printed sheets have no shadow in flight, so it settles in after the handoff. */
-.camera-photo {
+.printed-polaroid.camera-photo {
+  /* Prints from the camera keep the original neutral grey shadow. */
+  box-shadow: 0 6px 18px #0000001a, 0 1px 3px #0000000d;
   animation: shadow-in 0.6s ease-out both;
 }
 @keyframes shadow-in {
@@ -174,13 +184,21 @@ main {
   .intro-text br {
     display: none;
   }
+  main {
+    padding-bottom: 4rem;
+  }
   .work {
-    --camera-width: min(12.12rem, calc((100vw - 2rem) * 0.19));
-    margin-top: 3.75rem;
+    /* Bigger camera on phones; the pile is pulled in to make room. */
+    --camera-width: min(12.12rem, calc((100vw - 2rem) * 0.235));
+    margin-top: 3.25rem;
+    padding-bottom: calc(var(--camera-width) * 1.85);
+  }
+  .photo-stack {
+    --pile-spread: 0.72;
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .camera-photo {
+  .printed-polaroid.camera-photo {
     animation: none;
   }
   .printed-polaroid {
@@ -246,15 +264,20 @@ main {
   width: 2.75rem;
   height: 2.75rem;
   border-radius: 50%;
-  color: #929292;
+  color: color-mix(in srgb, var(--ink) 70%, transparent);
   transition: color 0.2s ease, background-color 0.2s ease;
 }
-.contact a:hover {
-  color: #080808;
-  background-color: #0000000a;
+@media (hover: hover) {
+  .contact a:hover {
+    color: var(--ink);
+    background-color: color-mix(in srgb, var(--ink) 10%, transparent);
+  }
+}
+.contact a {
+  -webkit-tap-highlight-color: transparent;
 }
 .contact a:focus-visible {
-  outline: 2px solid #080808;
+  outline: 2px solid var(--ink);
   outline-offset: 2px;
 }
 .contact svg {

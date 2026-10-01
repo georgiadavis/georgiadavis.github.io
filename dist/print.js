@@ -140,9 +140,9 @@
   const total = tuning.prints || photos.length;
   // The tabletop pile: work artwork and older snapshots. These never print.
   const pilePhotos = {
-    lilyPond: photo("assets/photo-1.png", "Portrait beside a lily pond"),
-    blueDoor: photo("assets/photo-2.png", "Portrait beside a blue door"),
-    sunset: photo("assets/photo-3.png", "Silhouettes by the sea at sunset"),
+    lilyPond: photo("assets/photo-1.jpg", "Portrait beside a lily pond"),
+    blueDoor: photo("assets/photo-2.jpg", "Portrait beside a blue door"),
+    sunset: photo("assets/photo-3.jpg", "Silhouettes by the sea at sunset"),
     oculus: photo("assets/work-2.png", "Oculus logo on a blue background"),
     udacity: photo("assets/work-3.png", "Udacity logo"),
     gofundme: photo("assets/work-4.png", "GoFundMe logo"),
@@ -185,11 +185,23 @@
 
   // Every card on the table, with its resting pose, so later prints can shove it.
   const tabled = [];
+  // Narrow screens pull the pile in sideways (--pile-spread in styles.css) so
+  // the camera and photos can be drawn larger. The animation uses the same value.
+  let spread = 1;
+  function readSpread() {
+    spread = parseFloat(getComputedStyle(stack).getPropertyValue("--pile-spread")) || 1;
+  }
+  readSpread();
   function place(item) {
-    item.element.style.transform = `translate(${item.x * 100}%, ${
+    item.element.style.transform = `translate(${item.x * spread * 100}%, ${
       item.y * 100
     }%) rotate(${item.angle}deg)`;
   }
+  // Re-lay the pile when the screen crosses the phone breakpoint (e.g. rotation).
+  matchMedia("(max-width: 600px)").addEventListener("change", () => {
+    readSpread();
+    tabled.forEach(place);
+  });
 
   // Which photo sits in each pile slot, in the same back-to-front order.
   const pileOrder = ["blueDoor", "udacity", "meta", "oculus", "clever", "lilyPond", "sunset", "gofundme", "whatsapp"];
@@ -750,7 +762,7 @@
         );
         gl.uniform3f(
           uniforms.pose,
-          destination.x * cardWidth,
+          destination.x * spread * cardWidth,
           destination.y * cardHeight,
           (destination.angle * Math.PI) / 180
         );

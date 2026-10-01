@@ -5,7 +5,7 @@
     { "src": "assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
     { "src": "assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
   ],
-  "theme_color": "#f5f5f5",
-  "background_color": "#f5f5f5",
+  "theme_color": "#dbf2ff",
+  "background_color": "#dbf2ff",
   "display": "browser"
 }

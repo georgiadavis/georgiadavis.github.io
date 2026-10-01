@@ -1,49 +1,193 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Georgia Davis is a designer based in San Francisco, currently building WhatsApp.">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Georgia Davis is a designer based in San Francisco, currently building WhatsApp."
+    />
     <title>Georgia Davis — Designer</title>
-    <link rel="icon" href="favicon.ico" sizes="any">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
-    <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
-    <link rel="manifest" href="site.webmanifest">
-    <link rel="preload" href="assets/fonts/Forevs-Regular.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="styles.css?v=contact2">
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/icons/favicon-32.png"
+    />
+    <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
+    <meta name="theme-color" content="#dbf2ff" />
+    <script>
+      // Pick a colour theme on each load, before first paint (no flash).
+      // Each theme is [background, ink]; ink colours the name, text and icons.
+      (() => {
+        const themes = {
+          blue: ["#dbf2ff", "#0600d9"],
+          red: ["#ffdbdb", "#ed0000"],
+          orange: ["#fff2dc", "#ee4400"],
+          green: ["#dcffdb", "#007d37"],
+        };
+        const names = Object.keys(themes);
+        const name = names[Math.floor(Math.random() * names.length)];
+        const [bg, ink] = themes[name];
+        const root = document.documentElement;
+        root.dataset.theme = name;
+        root.style.setProperty("--bg", bg);
+        root.style.setProperty("--ink", ink);
+        document.querySelector('meta[name="theme-color"]').content = bg;
+      })();
+    </script>
+    <link rel="manifest" href="site.webmanifest" />
+    <link
+      rel="preload"
+      href="assets/fonts/Forevs-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="stylesheet" href="styles.css?v=greyshadow" />
   </head>
   <body>
     <main>
       <header class="intro">
-        <h1><img class="name-logo" src="assets/georgia-logo.svg?v=2" width="362" height="62" alt="Georgia Davis"></h1>
-        <p class="intro-text">I’m a designer based in San Francisco, currently building WhatsApp.<br> Before that, I spent time working in the Meta Superintelligence<br> Labs, Reality Labs, Clever, GoFundMe, and Udacity.</p>
+        <h1>
+          <svg class="name-logo" viewBox="0 0 362 62" width="362" height="62" role="img" aria-label="Georgia Davis" xmlns="http://www.w3.org/2000/svg">
+            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(-1036.000000, -347.000000)" fill="currentColor" fill-rule="nonzero">
+            <g transform="translate(1036.368000, 347.291000)">
+                <path d="M0,25.996 C0,40.401 10.318,49.58 24.589,49.58 C30.954,49.58 36.85,48.24 41.741,46.029 C41.473,41.808 41.339,36.85 41.339,32.83 C41.339,25.795 42.009,24.254 44.756,21.775 L44.756,21.641 L28.073,21.641 L28.073,21.775 C31.691,24.79 32.227,26.264 32.227,33.299 C32.227,35.175 32.227,37.654 32.16,40.133 C30.351,40.736 28.073,41.272 25.058,41.272 C16.817,41.272 10.854,35.577 10.854,25.326 C10.854,15.812 17.286,10.251 26.264,10.251 C32.763,10.251 37.52,12.194 40.535,16.214 L40.669,16.214 L39.396,3.417 C36.582,3.417 30.887,2.278 25.527,2.278 C11.189,2.345 0,11.323 0,25.996 Z"></path>
+                <path d="M61.439,49.111 C66.33,49.111 69.412,48.575 71.69,47.972 L72.561,38.257 L72.427,38.257 C69.747,40.669 66.933,41.942 63.516,41.942 C57.754,41.942 55.141,37.386 55.007,29.614 L72.829,29.681 C72.896,28.14 72.963,26.063 72.963,24.723 C72.963,17.085 68.675,12.529 61.171,12.529 C52.461,12.529 45.828,19.095 45.828,31.021 C45.828,42.679 51.456,49.111 61.439,49.111 Z M55.409,24.254 C56.213,20.435 58.089,18.425 61.037,18.425 C63.65,18.425 65.191,20.502 65.459,24.12 L55.409,24.254 Z"></path>
+                <path d="M89.78,49.446 C99.026,49.446 104.788,42.21 104.788,30.887 C104.788,19.832 100.098,12.462 90.584,12.462 C81.338,12.462 75.509,19.698 75.509,31.021 C75.509,42.076 80.266,49.446 89.78,49.446 Z M90.383,42.277 C86.832,42.277 85.023,37.118 85.023,30.351 C85.023,23.919 86.832,19.564 89.981,19.564 C93.331,19.564 95.341,23.986 95.341,31.49 C95.341,38.391 93.666,42.277 90.383,42.277 Z"></path>
+                <path d="M106.597,48.709 L121.94,48.709 L121.94,48.575 C118.858,44.488 118.724,43.617 118.657,29.614 C118.657,28.81 118.657,26.733 118.657,24.723 C120.332,22.981 123.615,22.043 126.831,22.043 L127.836,22.043 L128.506,13.333 L126.764,13.333 C123.749,13.333 120.935,15.209 118.657,20.234 C118.59,17.822 118.054,14.606 117.719,12.596 C114.302,13.735 107.401,15.611 105.793,15.946 L105.793,16.08 C107.267,16.75 107.803,17.085 108.406,18.09 C109.143,19.296 109.478,21.239 109.478,29.346 C109.478,43.483 109.143,45.895 106.597,48.575 L106.597,48.709 Z"></path>
+                <path d="M143.447,35.979 C151.554,35.979 156.713,31.557 156.713,24.723 C156.713,20.502 155.105,17.286 152.023,15.41 C153.095,10.05 155.909,6.767 159.862,6.164 L159.862,6.03 C158.924,3.618 157.383,2.479 155.172,2.479 C151.621,2.479 149.209,5.628 149.008,14.07 C147.467,13.601 145.658,13.333 143.648,13.333 C135.474,13.333 130.248,17.688 130.248,24.589 C130.248,29.614 132.593,33.165 136.814,34.84 C133.732,37.252 131.588,39.061 131.588,41.674 C131.588,44.756 135.005,46.364 142.978,46.9 C149.879,47.637 151.621,48.508 151.621,51.188 C151.621,53.868 148.472,55.409 142.442,55.409 C137.082,55.409 134.737,54.27 134.737,51.724 C134.737,50.183 135.407,48.91 137.082,46.967 L137.015,46.9 C130.717,49.245 127.099,52.126 127.099,55.074 C127.099,58.893 131.789,61.238 140.901,61.238 C153.497,61.238 160.599,56.414 160.599,49.044 C160.599,43.215 157.383,40.736 146.127,39.865 C140.097,39.396 139.427,38.793 139.427,37.252 C139.427,36.85 139.561,36.247 139.762,35.644 C140.901,35.845 142.174,35.979 143.447,35.979 Z M143.514,30.217 C140.834,30.217 139.293,27.671 139.293,24.321 C139.293,21.038 140.767,18.961 143.045,18.961 C145.457,18.961 147.199,21.172 147.199,24.924 C147.199,28.676 145.993,30.217 143.514,30.217 Z"></path>
+                <path d="M161.269,48.709 L176.009,48.709 L176.009,48.575 C173.597,46.163 173.329,44.488 173.329,32.093 L173.329,28.81 C173.329,24.187 173.329,16.08 173.731,12.194 C170.85,13.534 162.341,15.477 160.465,15.946 L160.465,16.08 C161.939,16.75 162.475,17.085 163.078,18.09 C163.882,19.363 164.15,21.373 164.15,29.748 C164.15,43.416 163.815,45.962 161.269,48.575 L161.269,48.709 Z M168.17,10.854 C171.587,10.854 174.401,8.777 174.401,5.494 C174.401,2.278 171.721,0 168.505,0 C165.155,0 162.274,2.077 162.274,5.494 C162.274,8.844 164.686,10.854 168.17,10.854 Z"></path>
+                <path d="M176.813,41.741 C176.813,45.828 179.627,49.111 184.25,49.111 C185.456,49.111 187.265,49.044 189.074,48.642 L192.893,40.535 L192.826,40.401 C192.022,40.87 190.883,41.272 189.744,41.272 C186.997,41.272 185.925,40.133 185.925,37.721 C185.925,34.103 188.136,32.026 193.831,31.222 C193.697,35.041 193.429,41.272 193.429,43.55 C193.429,47.302 194.635,48.91 198.722,48.91 C200.598,48.91 201.804,48.843 203.01,48.709 L206.494,41.138 L206.427,41.004 C205.958,41.138 205.221,41.272 204.685,41.272 C203.278,41.272 203.01,40.267 203.01,27.738 C203.01,25.594 203.077,22.914 203.077,21.842 C203.077,15.142 198.454,12.663 191.419,12.663 C188.739,12.663 185.791,12.931 182.374,13.333 L178.488,22.512 L178.555,22.512 C181.101,21.239 185.389,20.167 189.275,20.167 C192.558,20.167 193.63,21.306 193.831,26.465 C182.91,30.351 176.813,35.108 176.813,41.741 Z"></path>
+                <path d="M217.482,48.709 C219.626,48.642 222.306,48.508 227.733,48.508 C231.351,48.575 236.108,48.843 240.53,48.843 C252.925,48.843 261.97,39.128 261.97,23.249 C261.97,10.586 253.863,2.948 239.994,2.948 C236.175,2.948 230.815,3.35 227.13,3.35 C222.038,3.35 219.492,3.216 217.482,3.149 L217.482,3.283 C220.832,6.231 221.167,7.973 221.167,25.996 C221.167,44.019 220.832,45.627 217.482,48.575 L217.482,48.709 Z M231.686,41.004 C231.485,37.721 231.418,33.165 231.418,26.398 C231.418,19.296 231.485,14.338 231.753,10.854 C233.964,10.72 236.175,10.586 238.788,10.586 C246.627,10.586 250.714,15.41 250.714,25.192 C250.714,35.242 246.024,41.205 239.123,41.205 C236.443,41.205 233.83,41.138 231.686,41.004 Z"></path>
+                <path d="M262.64,41.741 C262.64,45.828 265.454,49.111 270.077,49.111 C271.283,49.111 273.092,49.044 274.901,48.642 L278.72,40.535 L278.653,40.401 C277.849,40.87 276.71,41.272 275.571,41.272 C272.824,41.272 271.752,40.133 271.752,37.721 C271.752,34.103 273.963,32.026 279.658,31.222 C279.524,35.041 279.256,41.272 279.256,43.55 C279.256,47.302 280.462,48.91 284.549,48.91 C286.425,48.91 287.631,48.843 288.837,48.709 L292.321,41.138 L292.254,41.004 C291.785,41.138 291.048,41.272 290.512,41.272 C289.105,41.272 288.837,40.267 288.837,27.738 C288.837,25.594 288.904,22.914 288.904,21.842 C288.904,15.142 284.281,12.663 277.246,12.663 C274.566,12.663 271.618,12.931 268.201,13.333 L264.315,22.512 L264.382,22.512 C266.928,21.239 271.216,20.167 275.102,20.167 C278.385,20.167 279.457,21.306 279.658,26.465 C268.737,30.351 262.64,35.108 262.64,41.741 Z"></path>
+                <path d="M289.172,13.333 L289.172,13.467 C290.713,14.874 291.048,14.807 296.475,28.944 C302.907,46.565 303.51,47.972 303.644,49.178 L309.54,49.178 C309.942,47.637 311.081,44.488 316.709,28.944 C322.002,14.874 322.404,14.673 323.811,13.467 L323.811,13.333 L311.282,13.333 L311.282,13.467 C311.952,14.539 312.488,15.41 312.488,17.152 C312.488,19.43 311.55,22.914 309.004,30.351 C308.468,31.825 308.066,33.098 307.664,34.237 C307.329,33.031 306.86,31.758 306.391,30.351 C303.644,22.713 302.572,19.229 302.572,17.018 C302.572,15.477 303.108,14.606 303.912,13.467 L303.912,13.333 L289.172,13.333 Z"></path>
+                <path d="M323.476,48.709 L338.216,48.709 L338.216,48.575 C335.804,46.163 335.536,44.488 335.536,32.093 L335.536,28.81 C335.536,24.187 335.536,16.08 335.938,12.194 C333.057,13.534 324.548,15.477 322.672,15.946 L322.672,16.08 C324.146,16.75 324.682,17.085 325.285,18.09 C326.089,19.363 326.357,21.373 326.357,29.748 C326.357,43.416 326.022,45.962 323.476,48.575 L323.476,48.709 Z M330.377,10.854 C333.794,10.854 336.608,8.777 336.608,5.494 C336.608,2.278 333.928,0 330.712,0 C327.362,0 324.481,2.077 324.481,5.494 C324.481,8.844 326.893,10.854 330.377,10.854 Z"></path>
+                <path d="M340.628,48.575 C342.035,48.843 345.05,49.379 346.859,49.379 C355.368,49.379 360.728,45.359 360.728,38.257 C360.728,28.006 349.874,26.465 349.874,21.775 C349.874,20.167 351.214,19.095 353.291,19.095 C355.167,19.095 356.373,19.631 359.053,21.507 L359.12,21.507 L358.115,13.266 C357.043,12.998 354.765,12.797 352.956,12.797 C345.318,12.797 340.494,16.75 340.494,22.847 C340.494,30.82 351.013,33.969 351.013,38.994 C351.013,40.87 349.338,42.076 346.993,42.076 C344.715,42.076 342.638,40.937 339.824,38.659 L339.757,38.659 L340.628,48.575 Z"></path>
+            </g>
+        </g>
+    </g>
+          </svg>
+        </h1>
+        <p class="intro-text">
+          I’m a designer based in San Francisco, helping build WhatsApp.<br />
+          Before that, I spent time working in the Meta Superintelligence Labs,
+          <br />
+          Reality Labs, Clever, GoFundMe, and Udacity.
+        </p>
       </header>
       <section class="work" aria-label="Selected work">
-        <button class="camera-button" type="button" aria-label="Print a Polaroid" title="Print a Polaroid">
-          <img class="camera" src="assets/camera.png" width="797" height="817" alt="Vintage instant camera with a rainbow stripe">
+        <button
+          class="camera-button"
+          type="button"
+          aria-label="Print a Polaroid"
+          title="Print a Polaroid"
+        >
+          <img
+            class="camera"
+            src="assets/camera-600.png"
+            width="797"
+            height="817"
+            alt="Vintage instant camera with a rainbow stripe"
+          />
         </button>
         <canvas class="print-canvas" aria-hidden="true"></canvas>
-        <img class="camera-lip" src="assets/camera.png" width="797" height="817" alt="" aria-hidden="true">
+        <img
+          class="camera-lip"
+          src="assets/camera-600.png"
+          width="797"
+          height="817"
+          alt=""
+          aria-hidden="true"
+        />
         <div class="camera-flash" aria-hidden="true"></div>
         <div class="photo-stack">
           <figure class="polaroid">
-            <img class="project-image" src="assets/photo-1.png" alt="Portrait beside a lily pond">
+            <img
+              class="project-image"
+              src="assets/photo-1.jpg"
+              alt="Portrait beside a lily pond"
+            />
           </figure>
         </div>
       </section>
       <!-- Icons: Feather (feathericons.com), MIT license -->
       <footer class="contact">
-        <a href="mailto:georgiadavis925@gmail.com" aria-label="Email" title="Email">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <a
+          href="mailto:georgiadavis925@gmail.com"
+          aria-label="Email"
+          title="Email"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path
+              d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+            />
+            <polyline points="22,6 12,13 2,6" />
+          </svg>
         </a>
-        <a href="https://x.com/georgiatdavis" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" title="X">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-3.92 7.94"/></svg>
+        <a
+          href="https://x.com/georgiatdavis"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="X (Twitter)"
+          title="X"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="12" r="4" />
+            <path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-3.92 7.94" />
+          </svg>
         </a>
-        <a href="https://www.linkedin.com/in/georgiatdavis/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <a
+          href="https://www.linkedin.com/in/georgiatdavis/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn"
+          title="LinkedIn"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path
+              d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+            />
+          </svg>
         </a>
       </footer>
     </main>
-    <script src="print.js?v=georgia4" defer></script>
+    <script src="print.js?v=mobile" defer></script>
   </body>
 </html>
