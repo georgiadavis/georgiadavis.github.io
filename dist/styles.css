@@ -166,6 +166,9 @@ main {
 .printed-polaroid.camera-photo {
   /* Prints from the camera keep the original neutral grey shadow. */
   box-shadow: 0 6px 18px #0000001a, 0 1px 3px #0000000d;
+}
+/* Only used when print.js has flightShadow off. */
+.printed-polaroid.camera-photo.shadow-fade {
   animation: shadow-in 0.6s ease-out both;
 }
 @keyframes shadow-in {
@@ -198,7 +201,7 @@ main {
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .printed-polaroid.camera-photo {
+  .printed-polaroid.camera-photo.shadow-fade {
     animation: none;
   }
   .printed-polaroid {

@@ -54,6 +54,10 @@
     flashDuration: 900, // ms for the whole flash, including the fade out
     flashBloom: 1, // size of the soft glow around the flash window (0 = window only)
 
+    // Shadow under each sheet while it's in the air (matches the landed shadow at touchdown)
+    flightShadow: true, // false = no shadow until the print lands (it then fades in)
+    flightShadowBlur: 3, // how much softer the shadow is while the sheet is high (1 = no change)
+
     // Developing: the photo fades up from dark like real instant film
     develop: true, // false = photos come out fully developed
     developDelay: 1000, // ms after a print starts before the image begins to appear
@@ -320,6 +324,8 @@
     };
     place(item);
     if (!developed) keepDeveloping(item.element);
+    // Without the in-flight shadow, let the landed shadow fade in instead.
+    if (!developed && !tuning.flightShadow) item.element.classList.add("shadow-fade");
     tabled.push(item);
     landed.push(item.element);
     current = index + 1;
@@ -500,6 +506,79 @@
     }
   `;
 
+  // The sheet's shadow on the tabletop while it's in the air. It follows the
+  // sheet's position, sharpening and darkening as it comes down, and at touchdown
+  // matches the landed card's CSS shadow exactly (same offsets, blur and opacity).
+  const shadowVertexSource = `
+    precision highp float;
+    attribute vec2 a_uv;
+    uniform vec2 u_view;
+    uniform vec4 u_card;
+    uniform float u_slot;
+    uniform float u_progress;
+    uniform vec3 u_pose;
+    uniform vec2 u_plane;
+    uniform float u_pad;
+    varying vec2 v_local;
+    varying float v_y;
+    varying float v_land;
+    const float EJECT = 0.44;
+    void main() {
+      float f = clamp((u_progress - EJECT) / (1.0 - EJECT), 0.0, 1.0);
+      float settle = sin(f * 1.5707963);
+      float top = mix(u_slot - u_card.y, u_pose.y, settle);
+      float center = u_card.x + u_card.z * 0.5;
+      float drift = u_pose.x * settle;
+      // A quad around the card, in the card's own frame (origin at its centre).
+      vec2 local = (a_uv - 0.5) * (u_card.zw + 2.0 * u_pad);
+      vec2 pivot = vec2(center + drift, top + u_card.w * 0.65);
+      vec2 point = vec2(center + drift, top + u_card.w * 0.5) + local - pivot;
+      float angle = u_pose.z * settle;
+      vec2 turned = vec2(point.x * cos(angle) - point.y * sin(angle),
+                         point.x * sin(angle) + point.y * cos(angle)) + pivot;
+      // Always lies flat on the table, whatever the sheet itself is doing.
+      float scale = u_plane.y / (u_plane.y - turned.y * sin(u_plane.x));
+      float x = center + (turned.x - center) * scale;
+      float y = u_card.y + turned.y * cos(u_plane.x) * scale;
+      v_local = local;
+      v_y = y;
+      v_land = f;
+      gl_Position = vec4(x / u_view.x * 2.0 - 1.0, 1.0 - y / u_view.y * 2.0, 0.0, 1.0);
+    }
+  `;
+  const shadowFragmentSource = `
+    precision highp float;
+    uniform vec4 u_card;
+    uniform float u_slot;
+    uniform float u_blur;
+    varying vec2 v_local;
+    varying float v_y;
+    varying float v_land;
+    float erf(float x) {
+      float s = sign(x), a = abs(x);
+      x = 1.0 + (0.278393 + (0.230389 + 0.078108 * (a * a)) * a) * a;
+      x *= x;
+      return s - s / (x * x);
+    }
+    // A Gaussian-blurred rectangle, the same falloff CSS box-shadow uses.
+    float layer(vec2 p, vec2 halfSize, float sigma) {
+      vec2 a = (p + halfSize) * (0.70710678 / sigma);
+      vec2 b = (p - halfSize) * (0.70710678 / sigma);
+      return 0.25 * (erf(a.x) - erf(b.x)) * (erf(a.y) - erf(b.y));
+    }
+    void main() {
+      if (v_y < u_slot) discard;
+      float land = v_land * v_land * (3.0 - 2.0 * v_land);
+      float spread = mix(u_blur, 1.0, land);
+      vec2 halfSize = u_card.zw * 0.5;
+      // Matches: box-shadow: 0 6px 18px #0000001a, 0 1px 3px #0000000d.
+      float near = 0.10 * layer(v_local - vec2(0.0, 6.0), halfSize, 9.0 * spread);
+      float tight = 0.05 * layer(v_local - vec2(0.0, 1.0), halfSize, 1.5 * spread);
+      float alpha = (1.0 - (1.0 - near) * (1.0 - tight)) * land;
+      gl_FragColor = vec4(0.0, 0.0, 0.0, alpha);
+    }
+  `;
+
   function stop() {
     cancelAnimationFrame(frame);
     frame = 0;
@@ -527,12 +606,24 @@
   }
 
   try {
-    const program = gl.createProgram();
-    gl.attachShader(program, shader(gl.VERTEX_SHADER, vertexSource));
-    gl.attachShader(program, shader(gl.FRAGMENT_SHADER, fragmentSource));
-    gl.linkProgram(program);
-    if (!gl.getProgramParameter(program, gl.LINK_STATUS))
-      throw new Error(gl.getProgramInfoLog(program));
+    function link(vertex, fragment) {
+      const result = gl.createProgram();
+      gl.attachShader(result, shader(gl.VERTEX_SHADER, vertex));
+      gl.attachShader(result, shader(gl.FRAGMENT_SHADER, fragment));
+      // Both programs read the same vertex buffer at attribute 0.
+      gl.bindAttribLocation(result, 0, "a_uv");
+      gl.linkProgram(result);
+      if (!gl.getProgramParameter(result, gl.LINK_STATUS))
+        throw new Error(gl.getProgramInfoLog(result));
+      return result;
+    }
+    const shadowProgram = link(shadowVertexSource, shadowFragmentSource);
+    const shadowUniforms = Object.fromEntries(
+      ["view", "card", "slot", "progress", "pose", "plane", "pad", "blur"].map(
+        (name) => [name, gl.getUniformLocation(shadowProgram, `u_${name}`)]
+      )
+    );
+    const program = link(vertexSource, fragmentSource);
     gl.useProgram(program);
 
     const vertices = [];
@@ -562,9 +653,8 @@
     }
     gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
-    const position = gl.getAttribLocation(program, "a_uv");
-    gl.enableVertexAttribArray(position);
-    gl.vertexAttribPointer(position, 2, gl.FLOAT, false, 0, 0);
+    gl.enableVertexAttribArray(0);
+    gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
     const uniforms = Object.fromEntries(
       [
         "view",
@@ -748,11 +838,37 @@
         (parseFloat(plane.getPropertyValue("--pile-tilt")) * Math.PI) / 180,
         parseFloat(plane.getPropertyValue("--pile-depth")) * cameraRect.width
       );
+      const slotY = cameraRect.top - bounds.top + cameraRect.height * (734 / 817);
+      const tilt = (parseFloat(plane.getPropertyValue("--pile-tilt")) * Math.PI) / 180;
+      const depth = parseFloat(plane.getPropertyValue("--pile-depth")) * cameraRect.width;
+      if (tuning.flightShadow) {
+        gl.useProgram(shadowProgram);
+        gl.uniform2f(shadowUniforms.view, bounds.width, bounds.height);
+        gl.uniform4f(shadowUniforms.card, stack.offsetLeft, stack.offsetTop, cardWidth, cardHeight);
+        gl.uniform1f(shadowUniforms.slot, slotY);
+        gl.uniform2f(shadowUniforms.plane, tilt, depth);
+        const blur = Math.max(1, tuning.flightShadowBlur);
+        gl.uniform1f(shadowUniforms.blur, blur);
+        gl.uniform1f(shadowUniforms.pad, 6 + 3 * 9 * blur);
+        gl.useProgram(program);
+      }
       // Older sheets are lower on the pile, so draw them first.
       for (let index = current; index < total; index++) {
         const p = (elapsed - index * interval) / duration;
         if (p < 0) break;
         const destination = destinations[index];
+        if (tuning.flightShadow) {
+          gl.useProgram(shadowProgram);
+          gl.uniform1f(shadowUniforms.progress, p);
+          gl.uniform3f(
+            shadowUniforms.pose,
+            destination.x * spread * cardWidth,
+            destination.y * cardHeight,
+            (destination.angle * Math.PI) / 180
+          );
+          gl.drawArrays(gl.TRIANGLES, 0, vertices.length / 2);
+          gl.useProgram(program);
+        }
         gl.bindTexture(gl.TEXTURE_2D, textures[sequence[index]]);
         gl.uniform1f(uniforms.progress, p);
         gl.uniform2f(
