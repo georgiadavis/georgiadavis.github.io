@@ -4,7 +4,7 @@
   // ---- Tuning ---------------------------------------------------------------
   const tuning = {
     // Printing
-    prints: 6, // how many photos the camera prints
+    prints: 0, // how many photos the camera prints (0 = each photo of Georgia once)
     printDuration: 3400, // ms from first peek out of the slot to resting on the table
     printInterval: 3000, // ms between prints starting (less than printDuration = overlap)
 
@@ -18,9 +18,10 @@
     landingSideways: 0.4, // scales how far prints drift left/right (0 = straight down from the slot)
 
     // Pushing: how a landing print shoves the cards already on the table
+    push: false, // true = a landing print shoves the cards already on the table
     pushAt: 0.6, // point in the print's flight (0–1) when it touches down
-    pushStrength: 0.05, // distance a card right under the print moves, in card widths
-    pushReach: 1.2, // cards farther than this (card widths) are not moved
+    pushStrength: 0.0, // distance a card right under the print moves, in card widths
+    pushReach: 0, // cards farther than this (card widths) are not moved
     pushSpin: 10, // degrees of spin per card width pushed
     pushMaxShift: 0.2, // a card never drifts farther than this from its original spot
     pushMaxTurn: 6, // ...or turns more than this many degrees
@@ -93,7 +94,6 @@
   // Prints overlap: the next sheet starts ejecting while the last one settles.
   const duration = tuning.printDuration;
   const interval = tuning.printInterval;
-  const total = tuning.prints;
   let nudged = 0;
   let flashed = 0;
   const flashLight = document.querySelector(".camera-flash");
@@ -105,7 +105,11 @@
     flashLight.animate(
       [
         { opacity: 0, easing: "ease-out" },
-        { opacity: tuning.flashStrength, offset: rise, easing: "cubic-bezier(.2, .6, .3, 1)" },
+        {
+          opacity: tuning.flashStrength,
+          offset: rise,
+          easing: "cubic-bezier(.2, .6, .3, 1)",
+        },
         { opacity: 0 },
       ],
       { duration: tuning.flashDuration }
@@ -123,33 +127,36 @@
     image.alt = alt;
     return { src, alt, image };
   };
-  const snapshots = [
-    photo("assets/photo-1.png", "Portrait beside a lily pond"),
-    photo("assets/photo-2.png", "Portrait beside a blue door"),
-    photo("assets/photo-3.png", "Silhouettes by the sea at sunset"),
+  // Photos of Georgia: these are what the camera prints.
+  const photos = [
+    photo("assets/georgia-oculus-corgi.jpg", "Georgia with a corgi statue wearing an Oculus headset"),
+    photo("assets/georgia-papercraft.jpg", "Georgia building a paper prototype"),
+    photo("assets/georgia-mocap.jpg?v=2", "Georgia jumping in a motion-capture suit"),
+    photo("assets/georgia-subway.jpg?v=2", "Georgia in a Facebook subway car photo booth"),
+    photo("assets/georgia-stage.jpg", "Georgia speaking on stage with a microphone"),
+    // Always printed last (see sequence below).
+    photo("assets/georgia-whatsapp.jpg", "Georgia in front of a neon WhatsApp sign"),
   ];
-  const workPhotos = [
-    photo("assets/work-whatsapp.png", "Vintage green WhatsApp icon"),
-    photo("assets/work-2.png", "Oculus logo on a blue background"),
-    photo("assets/work-3.png", "Udacity logo"),
-    photo("assets/work-4.png", "GoFundMe logo"),
-    photo("assets/work-5.png", "WhatsApp logo on a green background"),
-    photo("assets/work-6.png", "Meta logo"),
-    photo(
-      "assets/work-7.png",
-      "Clever typography on a blue and pink background"
-    ),
-  ];
-  // Every image can come out of the camera; each has its own paper texture.
-  const photos = [...workPhotos, ...snapshots];
-  // A low mound of ten photos on the tabletop, back to front. Units are card
+  const total = tuning.prints || photos.length;
+  // The tabletop pile: work artwork and older snapshots. These never print.
+  const pilePhotos = {
+    lilyPond: photo("assets/photo-1.png", "Portrait beside a lily pond"),
+    blueDoor: photo("assets/photo-2.png", "Portrait beside a blue door"),
+    sunset: photo("assets/photo-3.png", "Silhouettes by the sea at sunset"),
+    oculus: photo("assets/work-2.png", "Oculus logo on a blue background"),
+    udacity: photo("assets/work-3.png", "Udacity logo"),
+    gofundme: photo("assets/work-4.png", "GoFundMe logo"),
+    whatsapp: photo("assets/work-5.png", "WhatsApp logo on a green background"),
+    meta: photo("assets/work-6.png", "Meta logo"),
+    clever: photo("assets/work-7.png", "Clever typography on a blue and pink background"),
+  };
+  // A low mound of nine photos on the tabletop, back to front. Units are card
   // widths/heights on the unprojected plane; small jitter keeps it organic.
   const pile = [
     [0.51, 0.26, -15],
     [1.83, 1.21, -16],
     [0.98, 0.91, 12],
     [-1.43, 0.98, 22],
-    [-0.02, 0.72, 6],
     [-0.11, 0.89, -3],
     [-0.72, 0.28, 10],
     [-0.01, 0.02, 0],
@@ -184,12 +191,12 @@
     }%) rotate(${item.angle}deg)`;
   }
 
-  // Work artwork fills the visible slots; snapshots sit where they are covered.
-  const pileOrder = [7, 2, 5, 1, 8, 6, 0, 9, 3, 4];
-  pileOrder.forEach((index, slot) => {
+  // Which photo sits in each pile slot, in the same back-to-front order.
+  const pileOrder = ["blueDoor", "udacity", "meta", "oculus", "clever", "lilyPond", "sunset", "gofundme", "whatsapp"];
+  pileOrder.forEach((name, slot) => {
     const [x, y, angle] = pile[slot];
     const item = {
-      element: makePrint(photos[index], "work"),
+      element: makePrint(pilePhotos[name], "work"),
       x,
       y,
       angle,
@@ -218,7 +225,7 @@
       const dx = item.x - target.x;
       const dy = (item.y - target.y) * aspect;
       const distance = Math.hypot(dx, dy);
-      if (distance > tuning.pushReach) return;
+      if (!tuning.push || distance >= tuning.pushReach) return;
       const strength =
         Math.pow(1 - distance / tuning.pushReach, 2) * tuning.pushStrength;
       const direction =
@@ -249,10 +256,13 @@
     });
   }
 
-  // Shuffled passes through every image, never printing the same one twice in a row.
+  // Shuffled passes through the photos, never printing the same one twice in a
+  // row. The last photo in the list (the WhatsApp selfie) is held back and
+  // always comes out last.
+  const finale = photos.length - 1;
   const sequence = [];
-  while (sequence.length < total) {
-    const pass = photos.map((_, index) => index);
+  while (sequence.length < total - 1) {
+    const pass = photos.map((_, index) => index).filter((index) => index !== finale);
     for (let i = pass.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [pass[i], pass[j]] = [pass[j], pass[i]];
@@ -260,12 +270,13 @@
     if (pass[0] === sequence[sequence.length - 1]) pass.push(pass.shift());
     sequence.push(...pass);
   }
-  sequence.length = total;
+  sequence.length = total - 1;
+  sequence.push(finale);
 
   // Each print takes its own spot on the inner mound. Its depth is a random
   // fraction of the pile's front-to-back extent, so it always travels out onto
   // the pile instead of dropping at the camera.
-  const spots = [0, 2, 4, 5, 6, 7].sort(() => Math.random() - 0.5);
+  const spots = [0, 2, 4, 5, 6].sort(() => Math.random() - 0.5);
   const pileBack = Math.min(...pile.map(([, y]) => y));
   const pileFront = Math.max(...pile.map(([, y]) => y));
   const destinations = Array.from({ length: total }, (_, index) => {
@@ -302,7 +313,7 @@
     current = index + 1;
     stack.setAttribute(
       "aria-label",
-      `10 scattered photos and ${index + 1} of ${total} new Polaroids printed`
+      `${pile.length} scattered photos and ${index + 1} of ${total} new Polaroids printed`
     );
   }
 
@@ -652,7 +663,10 @@
       )
         nudge(nudged++);
       // The flash fires a moment before each print starts to eject.
-      while (flashed < total && elapsed >= flashed * interval - tuning.flashLead) {
+      while (
+        flashed < total &&
+        elapsed >= flashed * interval - tuning.flashLead
+      ) {
         flashed++;
         fireFlash();
       }
@@ -702,8 +716,16 @@
         (tuning.shimmerAngle * Math.PI) / 180,
         tuning.shimmerSharpness
       );
-      gl.uniform2f(uniforms.sweep, tuning.shimmerStart, Math.min(tuning.shimmerEnd, 1));
-      gl.uniform2f(uniforms.fade, tuning.effectsFadeStart, Math.min(tuning.effectsFadeEnd, 1));
+      gl.uniform2f(
+        uniforms.sweep,
+        tuning.shimmerStart,
+        Math.min(tuning.shimmerEnd, 1)
+      );
+      gl.uniform2f(
+        uniforms.fade,
+        tuning.effectsFadeStart,
+        Math.min(tuning.effectsFadeEnd, 1)
+      );
       gl.uniform3f(uniforms.film, ...developRGB);
       gl.uniform1f(
         uniforms.slot,
@@ -734,7 +756,10 @@
         );
         gl.drawArrays(gl.TRIANGLES, 0, vertices.length / 2);
       }
-      const printing = Math.max(1, Math.min(total, Math.floor(elapsed / interval) + 1));
+      const printing = Math.max(
+        1,
+        Math.min(total, Math.floor(elapsed / interval) + 1)
+      );
       button.setAttribute(
         "aria-label",
         `Printing Polaroid ${printing} of ${total}`

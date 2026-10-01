@@ -50,7 +50,7 @@ main {
 }
 .name-logo {
   display: block;
-  width: 12.474297464%;
+  width: 12.405755%; /* 362-unit logo at the same scale as the 67-unit intro type */
   height: auto;
   margin: 0 auto;
 }
@@ -186,4 +186,79 @@ main {
   .printed-polaroid {
     transition: none;
   }
+}
+
+/* Flash: a glow in the flash window plus a soft bloom, laid over the camera image.
+   Positions are measured from camera.png (797 × 817); print.js animates opacity. */
+.camera-flash {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: var(--camera-width);
+  aspect-ratio: 797 / 817;
+  transform: translateX(-50%);
+  z-index: 6;
+  pointer-events: none;
+  opacity: 0;
+  mix-blend-mode: screen;
+}
+.camera-flash::before {
+  content: "";
+  position: absolute;
+  left: 8.78%;
+  top: 25.34%;
+  width: 17.31%;
+  height: 12.61%;
+  border-radius: 4%;
+  background: radial-gradient(
+    ellipse at 50% 45%,
+    #fffdf5d9 0%,
+    #fff4d9a6 55%,
+    #ffe6bd73 100%
+  );
+}
+.camera-flash::after {
+  content: "";
+  position: absolute;
+  left: 17.44%;
+  top: 31.64%;
+  width: calc(60% * var(--flash-bloom, 1));
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    #fff8e699 0%,
+    #fff3d93d 30%,
+    #fff3d900 68%
+  );
+}
+
+/* Contact links under the pile. */
+.contact {
+  display: flex;
+  justify-content: center;
+  gap: 1.75rem;
+}
+.contact a {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  color: #929292;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+.contact a:hover {
+  color: #080808;
+  background-color: #0000000a;
+}
+.contact a:focus-visible {
+  outline: 2px solid #080808;
+  outline-offset: 2px;
+}
+.contact svg {
+  width: 1.375rem;
+  height: 1.375rem;
+  stroke-width: 2.25;
 }
