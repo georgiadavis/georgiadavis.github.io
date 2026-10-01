@@ -29,6 +29,15 @@ main {
   padding: 6.5rem 1.5rem 10rem;
 }
 .intro {
+  /* Intro type stays at --type-size and only shrinks once the longest line
+     (20.1em wide) would come within --type-margin of the window edges. */
+  --type-size: 2.25rem;
+  --type-margin: 3.5rem;
+  --type: clamp(
+    1.375rem,
+    calc((100vw - 2 * var(--type-margin)) / 20.1),
+    var(--type-size)
+  );
   max-width: 1945.333px;
   margin: 0 auto;
   text-align: center;
@@ -45,7 +54,7 @@ main {
   font-family: "Forevs", "Iowan Old Style", "Palatino Linotype", Palatino,
     Georgia, serif;
   font-weight: 400;
-  font-size: max(1.375rem, calc(min(100vw - 3rem, 1945.333px) * 0.02296));
+  font-size: var(--type);
   line-height: 1.26;
   color: var(--ink);
   text-wrap: balance;
@@ -53,8 +62,8 @@ main {
 }
 .name-logo {
   display: block;
-  /* 362-unit logo at the same scale as the 67-unit intro type; never smaller than phones can read. */
-  width: max(11.405755%, 6.75rem);
+  /* Sized from the intro type so the two always scale together. */
+  width: calc(var(--type) * 4.968);
   height: auto;
   margin: 0 auto;
 }
