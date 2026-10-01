@@ -1,9 +1,9 @@
-# Publishes the static site in dist/ to GitHub Pages on every push to main.
+# Publishes the static site in dist/ to GitHub Pages on every push to master (or main).
 name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [master, main]
   workflow_dispatch:
 
 permissions:
