@@ -145,12 +145,12 @@
   // The tabletop pile: work artwork and older snapshots. These never print.
   const pilePhotos = {
     lilyPond: photo("assets/photo-1.jpg", "Portrait beside a lily pond"),
-    blueDoor: photo("assets/photo-2.jpg", "Portrait beside a blue door"),
-    sunset: photo("assets/photo-3.jpg", "Silhouettes by the sea at sunset"),
-    oculus: photo("assets/work-2.png", "Oculus logo on a blue background"),
+    blueDoor: photo("assets/photo-2-crop.jpg?v=2", "Georgia sitting beside a blue door"),
+    beach: photo("assets/georgia-beach.jpg", "Georgia smiling in front of a painted seascape"),
+    appIcon: photo("assets/work-app-icon.png", "App icon with a square, heart, star and cursor on a purple background"),
     udacity: photo("assets/work-3.png", "Udacity logo"),
     gofundme: photo("assets/work-4.png", "GoFundMe logo"),
-    whatsapp: photo("assets/work-5.png", "WhatsApp logo on a green background"),
+    whatsapp: photo("assets/work-whatsapp-glow.png", "Glowing WhatsApp logo on a green background"),
     meta: photo("assets/work-6.png", "Meta logo"),
     clever: photo("assets/work-7.png", "Clever typography on a blue and pink background"),
   };
@@ -208,7 +208,7 @@
   });
 
   // Which photo sits in each pile slot, in the same back-to-front order.
-  const pileOrder = ["blueDoor", "udacity", "meta", "oculus", "clever", "lilyPond", "sunset", "gofundme", "whatsapp"];
+  const pileOrder = ["blueDoor", "udacity", "meta", "appIcon", "clever", "lilyPond", "beach", "gofundme", "whatsapp"];
   pileOrder.forEach((name, slot) => {
     const [x, y, angle] = pile[slot];
     const item = {
